@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "styles/breakpoints";
 
 import { ReactComponent as SearchIcon } from "../../../styles/icons/search.svg";
 
@@ -40,7 +41,12 @@ const StyledInputWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors?.accent};
   position: relative;
   border-radius: 8px;
-  height: 48px;
+  max-height: 48px;
+  min-height: 48px;
+  flex-basis: 392px;
+  max-width: 392px;
+  display: flex;
+  align-items: center;
 
   svg {
     cursor: pointer;
@@ -57,7 +63,6 @@ const StyledInputWrapper = styled.div`
 const StyledInput = styled.input`
   border: none;
   border-radius: 8px;
-  width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.colors?.foreground};
   outline: none;

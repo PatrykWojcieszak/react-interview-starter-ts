@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "styles/breakpoints";
 
 export const Avatar = () => {
   return (
@@ -19,4 +20,8 @@ const StyledAvatar = styled.img`
   position: absolute;
   top: 48px;
   right: 24px;
+
+  @media ${device.laptop} {
+    right: 105px;
+  }
 `;

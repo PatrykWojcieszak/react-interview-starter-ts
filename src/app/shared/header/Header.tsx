@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "styles/breakpoints";
 
 import { Avatar } from "./avatar/Avatar";
 import { Filtering } from "./filtering/Filtering";
@@ -15,8 +16,16 @@ export const Header = () => {
 };
 
 const StyledHeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 248px;
   padding: 24px;
+
+  @media ${device.laptop} {
+    flex-direction: row;
+    height: 144px;
+    padding: 24px 105px;
+  }
 `;
 
 const StyledCompanyName = styled.h2`
