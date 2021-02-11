@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ReactComponent as StarFilled } from "../../../../styles/icons/starFilled.svg";
-import { ReactComponent as Star } from "../../../../styles/icons/star.svg";
+import { ReactComponent as StarFilled } from "../../../../../styles/icons/starFilled.svg";
+import { ReactComponent as Star } from "../../../../../styles/icons/star.svg";
 
 import { RatingProps } from "./Rating.types";
 import styled from "styled-components";
