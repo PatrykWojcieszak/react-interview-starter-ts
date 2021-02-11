@@ -1,19 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { Input } from "../input/Input";
-import { InputTypes } from "../input/Input.types";
+
 import { Avatar } from "./avatar/Avatar";
+import { Filtering } from "./filtering/Filtering";
 
 export const Header = () => {
   return (
     <StyledHeaderContainer>
       <StyledCompanyName>join.tsh.io</StyledCompanyName>
-      <Input
-        name="search"
-        showIcon
-        type={InputTypes.text}
-        placeholder="Search"
-      />
+      <Filtering />
       <Avatar />
     </StyledHeaderContainer>
   );
@@ -28,4 +23,5 @@ const StyledCompanyName = styled.h2`
   color: ${({ theme }) => theme.colors?.fontMain};
   font-size: 24px;
   margin-top: 28px;
+  line-height: 40px;
 `;

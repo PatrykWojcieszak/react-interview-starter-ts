@@ -50,6 +50,7 @@ const StyledInputWrapper = styled.div`
     bottom: 0;
     margin: auto;
     stroke: ${({ theme }) => theme.colors?.fontMain};
+    fill: ${({ theme }) => theme.colors?.fontMain};
   }
 `;
 
