@@ -27,31 +27,33 @@ export const Login = () => {
       />
       <StyledLoginWrapper>
         <StyledCompanyName>join.tsh.io</StyledCompanyName>
-        <StyledLoginForm>
-          <StyledLogin>Login</StyledLogin>
-          <StyledInputField
-            as={Input}
-            name="username"
-            placeholder="Enter username"
-            label="Username"
-            type={InputTypes.text}
-          />
-          <StyledInputField
-            as={Input}
-            name="password"
-            placeholder="Enter password"
-            label="Password"
-            type={InputTypes.password}
-          />
-          <StyledButton
-            as={Button}
-            name="login"
-            text="Log in"
-            clicked={loginClickHandler}
-            styleType={BtnStyleTypes.primary}
-          />
-          <StyledForgotPassword>Forgot password?</StyledForgotPassword>
-        </StyledLoginForm>
+        <StyledLoginFormContainer>
+          <StyledLoginFormWrapper>
+            <StyledLogin>Login</StyledLogin>
+            <StyledInputField
+              as={Input}
+              name="username"
+              placeholder="Enter username"
+              label="Username"
+              type={InputTypes.text}
+            />
+            <StyledInputField
+              as={Input}
+              name="password"
+              placeholder="Enter password"
+              label="Password"
+              type={InputTypes.password}
+            />
+            <StyledButton
+              as={Button}
+              name="login"
+              text="Log in"
+              clicked={loginClickHandler}
+              styleType={BtnStyleTypes.primary}
+            />
+            <StyledForgotPassword>Forgot password?</StyledForgotPassword>
+          </StyledLoginFormWrapper>
+        </StyledLoginFormContainer>
       </StyledLoginWrapper>
     </StyledLoginContainer>
   );
@@ -90,12 +92,22 @@ const StyledCompanyName = styled.h2`
   color: ${({ theme }) => theme.colors?.black};
 `;
 
-const StyledLoginForm = styled.div`
+const StyledLoginFormContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  @media ${device.laptop} {
+    justify-content: flex-start;
+  }
+`;
+
+const StyledLoginFormWrapper = styled.div`
+  flex-basis: 496px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  min-width: 327px;
 `;
 
 const StyledLogin = styled.h2`
@@ -107,12 +119,10 @@ const StyledLogin = styled.h2`
 
 const StyledInputField = styled.div`
   margin-bottom: 22px;
-  max-width: 496px;
 `;
 
 const StyledButton = styled.button`
   margin-top: 24px;
-  max-width: 496px;
 `;
 
 const StyledForgotPassword = styled.a`
