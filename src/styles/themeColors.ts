@@ -1,11 +1,13 @@
 import { Colors } from "styled-components";
 
 export const mainTheme: Colors = {
-  foreground: "#FFFFFF",
+  white: "#FFFFFF",
   background: "#F8F8FA",
-  fontMain: "#1A1B1D",
-  fontSecondary: "9194A5",
-  blue: "#4460F7",
+  black: "#1A1B1D",
+  darkGrey: "#9194A5",
+  lightGrey: "#B9BDCF",
+  lightBlue: "#4460F7",
+  darkBlue: "#2140E8",
   yellow: "#F9A52B",
   btnDisabled: "#9194A5",
   accent: "#E0E2EA",

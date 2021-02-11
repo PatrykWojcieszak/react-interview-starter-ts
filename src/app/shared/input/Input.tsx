@@ -55,8 +55,8 @@ const StyledInputWrapper = styled.div`
     top: 0;
     bottom: 0;
     margin: auto;
-    stroke: ${({ theme }) => theme.colors?.fontMain};
-    fill: ${({ theme }) => theme.colors?.fontMain};
+    stroke: ${({ theme }) => theme.colors?.black};
+    fill: ${({ theme }) => theme.colors?.black};
   }
 `;
 
@@ -64,12 +64,12 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 8px;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors?.foreground};
+  background-color: ${({ theme }) => theme.colors?.white};
   outline: none;
   font-size: 14px;
   line-height: 16px;
   padding-left: 16px;
-  color: ${({ theme }) => theme.colors?.fontMain};
+  color: ${({ theme }) => theme.colors?.black};
   font-family: ${({ theme }) => theme.fonts?.family};
 
   ::placeholder {

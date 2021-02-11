@@ -20,6 +20,7 @@ const StyledHeaderContainer = styled.div`
   flex-direction: column;
   height: 248px;
   padding: 24px;
+  background-color: ${({ theme }) => theme.colors?.white};
 
   @media ${device.laptop} {
     flex-direction: row;
@@ -29,7 +30,7 @@ const StyledHeaderContainer = styled.div`
 `;
 
 const StyledCompanyName = styled.h2`
-  color: ${({ theme }) => theme.colors?.fontMain};
+  color: ${({ theme }) => theme.colors?.black};
   font-size: 24px;
   margin-top: 28px;
   line-height: 40px;

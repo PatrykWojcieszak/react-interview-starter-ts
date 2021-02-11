@@ -5,18 +5,18 @@ declare module "styled-components" {
     colors: Colors;
     fonts: Fonts;
   }
-
   export interface Colors {
-    foreground: string;
+    white: string;
     background: string;
-    fontMain: string;
-    fontSecondary: string;
-    blue: string;
+    black: string;
+    darkGrey: string;
+    lightGrey: string;
+    lightBlue: string;
+    darkBlue: string;
     yellow: string;
     btnDisabled: string;
     accent: string;
   }
-
   export interface Fonts {
     family: string;
   }
