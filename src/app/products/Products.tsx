@@ -1,3 +1,4 @@
+import { Header } from "app/shared/header/Header";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -8,6 +9,7 @@ export const Products = () => {
     <>
       <h2>Products page</h2>
       <Link to={AppRoute.login}> Login </Link>
+      <Header />
     </>
   );
 };
