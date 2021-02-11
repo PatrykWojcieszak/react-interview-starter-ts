@@ -96,11 +96,12 @@ const StyledLoginFormContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%;
   align-items: center;
+  margin-top: 103px;
 
   @media ${device.laptop} {
     justify-content: flex-start;
+    margin-top: 235px;
   }
 `;
 
