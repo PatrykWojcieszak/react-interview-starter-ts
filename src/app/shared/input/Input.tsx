@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { ReactComponent as SearchIcon } from "../../../styles/icons/search.svg";
+
 import { InputProps } from "./Input.types";
 
 export const Input = ({
