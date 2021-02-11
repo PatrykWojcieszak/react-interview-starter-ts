@@ -1,16 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import { AppProviders } from 'providers/AppProviders';
+import { AppProviders } from "providers/AppProviders";
 
-import { App } from './app/App';
-import * as serviceWorker from './serviceWorker';
+import { App } from "./app/App";
+import * as serviceWorker from "./serviceWorker";
+
+//STYLES
+import { ThemeProvider } from "styled-components";
+import { Typography } from "./styles/themeFonts";
+import { mainTheme } from "./styles/themeColors";
+import { GlobalStyle } from "styles/global";
 
 ReactDOM.render(
   <AppProviders>
-    <App />
+    <ThemeProvider theme={{ fonts: Typography, colors: mainTheme }}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
   </AppProviders>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
