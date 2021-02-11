@@ -11,7 +11,8 @@ export const Filtering = () => {
 
   return (
     <StyledFilteringContainer>
-      <Input
+      <StyledInput
+        as={Input}
         name="search"
         showIcon
         type={InputTypes.text}
@@ -34,6 +35,11 @@ export const Filtering = () => {
     </StyledFilteringContainer>
   );
 };
+
+const StyledInput = styled.div`
+  max-width: 392px;
+  flex-basis: 392px;
+`;
 
 const StyledFilteringContainer = styled.div`
   display: flex;

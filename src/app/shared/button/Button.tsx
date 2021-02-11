@@ -9,9 +9,11 @@ export const Button = ({
   text,
   disabled,
   styleType,
+  className,
 }: ButtonProps) => {
   return (
     <StyledButton
+      className={className}
       styleType={styleType}
       name={name}
       onClick={clicked}

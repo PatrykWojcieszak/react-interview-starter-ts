@@ -9,4 +9,5 @@ export type ButtonProps = {
   text: string;
   disabled?: boolean;
   styleType: BtnStyleTypes;
+  className?: string;
 };

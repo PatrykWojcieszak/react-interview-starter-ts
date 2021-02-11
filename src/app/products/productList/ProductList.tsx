@@ -6,7 +6,7 @@ import { Card } from "./card/Card";
 import { Product } from "./product/Product";
 
 export const ProductList = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <StyledProductList>
