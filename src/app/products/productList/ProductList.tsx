@@ -33,11 +33,6 @@ export const ProductList = () => {
 const StyledProductList = styled.div`
   display: flex;
   justify-content: center;
-  padding: 24px;
   flex-wrap: wrap;
   gap: 24px;
-
-  @media ${device.laptop} {
-    padding: 56px 108px;
-  }
 `;
