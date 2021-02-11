@@ -9,6 +9,6 @@ export const Image = ({ img }: ImageProps) => {
 
 const StyledImage = styled.img`
   height: 170px;
-  width: 327px;
+  width: 100%;
   border-radius: 8px 8px 0 0;
 `;

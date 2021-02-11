@@ -5,12 +5,16 @@ import { DetailsProps } from "./Details.types";
 
 export const Details = ({ title, description }: DetailsProps) => {
   return (
-    <>
+    <StyledDetailsContainer>
       <StyledTitle>{title}</StyledTitle>
       <StyledDescription>{description}</StyledDescription>
-    </>
+    </StyledDetailsContainer>
   );
 };
+
+const StyledDetailsContainer = styled.div`
+  height: calc(100% - (38px + 24px + 18px));
+`;
 
 const StyledTitle = styled.h2`
   color: ${({ theme }) => theme.colors?.fontMain};

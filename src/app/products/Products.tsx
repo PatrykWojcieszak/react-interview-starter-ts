@@ -19,5 +19,5 @@ export const Products = () => {
 
 const StyledProducts = styled.div`
   background-color: ${({ theme }) => theme.colors?.background};
-  height: 100vh;
+  height: 100%;
 `;
