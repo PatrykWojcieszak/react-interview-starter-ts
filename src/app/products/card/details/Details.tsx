@@ -20,7 +20,7 @@ const StyledTitle = styled.h2`
 
 const StyledDescription = styled.h4`
   margin-top: 8px;
-  color: ${({ theme }) => theme.colors?.fontSecondary};
+  color: ${({ theme }) => theme.colors?.grey};
   font-size: 14px;
   line-height: 16px;
 `;

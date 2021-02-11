@@ -64,7 +64,7 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 8px;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors?.foreground};
+  background-color: ${({ theme }) => theme.colors?.white};
   outline: none;
   font-size: 14px;
   line-height: 16px;

@@ -20,7 +20,7 @@ const StyledHeaderContainer = styled.div`
   flex-direction: column;
   height: 248px;
   padding: 24px;
-  background-color: ${({ theme }) => theme.colors?.foreground};
+  background-color: ${({ theme }) => theme.colors?.white};
 
   @media ${device.laptop} {
     flex-direction: row;
