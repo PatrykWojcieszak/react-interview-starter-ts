@@ -15,8 +15,8 @@ export const Products = () => {
       <Link to={AppRoute.login}> Login </Link> */}
       <Header />
       <StyledBody>
-        <NoProducts />
-        {/* <ProductList /> */}
+        {/* <NoProducts /> */}
+        <ProductList />
       </StyledBody>
     </StyledProducts>
   );
