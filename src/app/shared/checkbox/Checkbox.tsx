@@ -45,7 +45,7 @@ const StyledCheckbox = styled.div<{ checked: boolean; name: string }>`
   height: 24px;
   border-radius: 4px;
   background: ${({ theme, checked }) =>
-    checked ? theme.colors?.blue : theme.colors?.background};
+    checked ? theme.colors?.blue : theme.colors?.foreground};
   border: 1px solid
     ${({ theme, checked }) =>
       checked ? theme.colors?.blue : theme.colors?.accent};

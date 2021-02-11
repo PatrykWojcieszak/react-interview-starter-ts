@@ -6,10 +6,7 @@ import { Checkbox } from "app/shared/checkbox/Checkbox";
 
 export const Filtering = () => {
   const [isPromo, setIsPromo] = useState(false);
-
-  const isPromoHandler = (checked: boolean) => {
-    setIsPromo(checked);
-  };
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <StyledFilteringContainer>
@@ -19,16 +16,33 @@ export const Filtering = () => {
         type={InputTypes.text}
         placeholder="Search"
       />
-      <Checkbox
-        name="active"
-        checked={isPromo}
-        label="Active"
-        checkedHandler={(checked: boolean) => isPromoHandler(checked)}
-      />
+      <StyledCheckboxContainer>
+        <Checkbox
+          name="promo"
+          checked={isPromo}
+          label="Promo"
+          checkedHandler={(checked: boolean) => setIsPromo(checked)}
+        />
+        <Checkbox
+          name="active"
+          checked={isActive}
+          label="Active"
+          checkedHandler={(checked: boolean) => setIsActive(checked)}
+        />
+      </StyledCheckboxContainer>
     </StyledFilteringContainer>
   );
 };
 
 const StyledFilteringContainer = styled.div`
   margin-top: 28px;
+`;
+
+const StyledCheckboxContainer = styled.div`
+  display: flex;
+  margin-top: 24px;
+
+  > :last-child {
+    margin-left: 32px;
+  }
 `;
