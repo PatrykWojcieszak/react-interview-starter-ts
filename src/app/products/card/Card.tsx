@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Details } from "./details/Details";
 
 import { Image } from "./image/Image";
+import { Rating } from "./rating/Rating";
 
 export const Card = () => {
   const btnClicked = () => {
@@ -19,6 +20,7 @@ export const Card = () => {
           title="Nike Running Shoes"
           description="Buying Used Electronic Test Equipment What S The Difference Between Used Refurbished Remarketed And Rebuilt"
         />
+        <Rating rating={3} />
         <Button
           name="showDetails"
           text="Show details"

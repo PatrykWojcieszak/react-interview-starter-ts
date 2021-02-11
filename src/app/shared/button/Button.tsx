@@ -59,14 +59,14 @@ const StyledButton = styled.button<{ styleType: BtnStyleTypes }>`
   &:disabled {
     background-color: ${({ theme, styleType }) =>
       styleType === BtnStyleTypes.primary
-        ? theme.colors?.grey
+        ? theme.colors?.darkGrey
         : theme.colors?.white};
 
     color: ${({ theme, styleType }) =>
       styleType === BtnStyleTypes.primary
         ? theme.colors?.white
-        : theme.colors?.grey};
+        : theme.colors?.darkGrey};
 
-    border: 1px solid ${({ theme }) => theme.colors?.grey};
+    border: 1px solid ${({ theme }) => theme.colors?.darkGrey};
   }
 `;
