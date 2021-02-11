@@ -8,7 +8,7 @@ declare module "styled-components" {
   export interface Colors {
     white: string;
     background: string;
-    fontMain: string;
+    black: string;
     darkGrey: string;
     lightGrey: string;
     lightBlue: string;

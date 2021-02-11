@@ -17,7 +17,7 @@ const StyledDetailsContainer = styled.div`
 `;
 
 const StyledTitle = styled.h2`
-  color: ${({ theme }) => theme.colors?.fontMain};
+  color: ${({ theme }) => theme.colors?.black};
   font-size: 18px;
   line-height: 16px;
 `;

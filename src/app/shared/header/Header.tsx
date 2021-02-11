@@ -30,7 +30,7 @@ const StyledHeaderContainer = styled.div`
 `;
 
 const StyledCompanyName = styled.h2`
-  color: ${({ theme }) => theme.colors?.fontMain};
+  color: ${({ theme }) => theme.colors?.black};
   font-size: 24px;
   margin-top: 28px;
   line-height: 40px;

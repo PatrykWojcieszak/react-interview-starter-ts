@@ -33,7 +33,7 @@ const CheckboxContainer = styled.div`
 
 const StyledLabel = styled.label`
   margin-left: 8px;
-  color: ${({ theme }) => theme.colors?.fontMain};
+  color: ${({ theme }) => theme.colors?.black};
   font-size: 14px;
   line-height: 16px;
   cursor: pointer;
