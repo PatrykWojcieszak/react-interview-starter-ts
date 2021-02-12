@@ -12,6 +12,7 @@ export const Input = ({
   placeholder,
   label,
   type,
+  className,
 }: InputProps) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -22,7 +23,7 @@ export const Input = ({
   return (
     <>
       {label && <StyledLabel>{label}</StyledLabel>}
-      <StyledInputWrapper>
+      <StyledInputWrapper className={className}>
         <StyledInput
           onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) =>
             handleKeyDown(event)
@@ -38,15 +39,14 @@ export const Input = ({
 };
 
 const StyledInputWrapper = styled.div`
+  width: 100%;
   border: 1px solid ${({ theme }) => theme.colors?.accent};
   position: relative;
   border-radius: 8px;
-  max-height: 48px;
-  min-height: 48px;
-  flex-basis: 392px;
-  max-width: 392px;
   display: flex;
   align-items: center;
+  max-height: 48px;
+  min-height: 48px;
 
   svg {
     cursor: pointer;
@@ -63,7 +63,6 @@ const StyledInputWrapper = styled.div`
 const StyledInput = styled.input`
   border: none;
   border-radius: 8px;
-  height: 100%;
   background-color: ${({ theme }) => theme.colors?.white};
   outline: none;
   font-size: 14px;
@@ -79,4 +78,5 @@ const StyledInput = styled.input`
 
 const StyledLabel = styled.label`
   font-size: 14px;
+  margin-bottom: 8px;
 `;

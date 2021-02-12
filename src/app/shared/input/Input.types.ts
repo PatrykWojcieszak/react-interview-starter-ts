@@ -10,4 +10,5 @@ export type InputProps = {
   label?: string;
   placeholder?: string;
   type: InputTypes;
+  className?: string;
 };
