@@ -8,11 +8,7 @@ import { Details } from "./details/Details";
 
 import { Rating } from "./rating/Rating";
 
-export const Card = ({ product }: CardProps) => {
-  const btnClicked = () => {
-    console.log("klik");
-  };
-
+export const Card = ({ product, showDetailsHandler }: CardProps) => {
   return (
     <StyledCard>
       {product.promo && <StyledPromo>Promo</StyledPromo>}
@@ -29,7 +25,7 @@ export const Card = ({ product }: CardProps) => {
             name="showDetails"
             text={product.active ? "Show details" : "Unavailable"}
             disabled={!product.active}
-            clicked={btnClicked}
+            clicked={() => showDetailsHandler(product.id)}
             styleType={BtnStyleTypes.primary}
           />
         </StyledStickyBottom>

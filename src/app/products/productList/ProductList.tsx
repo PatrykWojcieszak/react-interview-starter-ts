@@ -8,20 +8,32 @@ import { ProductListProps } from "./ProductList.types";
 
 export const ProductList = ({ products }: ProductListProps) => {
   const [showModal, setShowModal] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(0);
+
+  const selectedProductHandler = (id: number) => {
+    setSelectedProductId(id);
+    setShowModal(true);
+  };
 
   return (
     <StyledProductList>
       <Modal show={showModal} close={() => setShowModal(false)}>
         <Product
           close={() => setShowModal(false)}
-          img="https://i.imgur.com/zncbCrB.png"
-          title="Nike Running Shoes"
-          description="Buying Used Electronic Test Equipment What S The Difference Between Used Refurbished Remarketed And Rebuilt"
+          img={products.find((x) => x.id === selectedProductId)?.image}
+          name={products.find((x) => x.id === selectedProductId)?.name}
+          description={
+            products.find((x) => x.id === selectedProductId)?.description
+          }
         />
       </Modal>
 
       {products.map((product) => (
-        <Card key={product.id} product={product} />
+        <Card
+          key={product.id}
+          product={product}
+          showDetailsHandler={(id: number) => selectedProductHandler(id)}
+        />
       ))}
     </StyledProductList>
   );

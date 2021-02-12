@@ -1,6 +1,6 @@
 export type ProductTypes = {
-  img: string;
-  title: string;
-  description: string;
+  img?: string;
+  name?: string;
+  description?: string;
   close: () => void;
 };
