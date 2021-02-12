@@ -71,6 +71,8 @@ const StyledInput = styled.input`
   padding-left: 16px;
   color: ${({ theme }) => theme.colors?.black};
   font-family: ${({ theme }) => theme.fonts?.family};
+  width: 100%;
+  height: 100%;
 
   ::placeholder {
     color: #9194a5;
