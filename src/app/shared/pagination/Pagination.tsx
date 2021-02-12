@@ -5,88 +5,65 @@ import { PaginationProps } from "./Pagination.types";
 export const Pagination = ({
   totalPages,
   selectedPageHandler,
-  totalItems,
-  itemsPerPage,
 }: PaginationProps) => {
-  const [selected, setSelected] = useState(1);
+  const [selectedPage, setSelectedPage] = useState(1);
   const pageNumbers: JSX.Element[] = [];
+  let ellipsis = false; //separator between page numbers
 
-  const setPage = (page: number) => {
-    setSelected(page);
+  const setSelectedPageHandler = (page: number) => {
+    setSelectedPage(page);
     selectedPageHandler(page);
   };
 
-  if (totalPages <= 7) {
-    for (let i = 1; i <= totalPages; i++) {
+  const addPageToArr = (start: number, end: number) => {
+    for (let i = start; i <= end; i++) {
       pageNumbers.push(
         <StyledElement
-          onClick={() => setPage(i)}
-          selected={selected === i ? true : false}
+          onClick={() => setSelectedPageHandler(i)}
+          selected={selectedPage === i ? true : false}
           key={i}>
           {i}
         </StyledElement>
       );
     }
-  } else {
-    if (totalPages - selected < 6) {
-      for (let i = totalPages - 6; i <= totalPages; i++) {
-        pageNumbers.push(
-          <StyledElement
-            onClick={() => setPage(i)}
-            selected={selected === i ? true : false}
-            key={i}>
-            {i}
-          </StyledElement>
-        );
-      }
-    } else {
-      let startPage = selected;
-      let endPage = selected;
+  };
 
-      if (selected - 1 <= 0) {
-        startPage = 2;
-        endPage = 2;
-      }
+  if (totalPages > 7 && totalPages - selectedPage >= 6) ellipsis = true;
 
-      for (let i = startPage - 1; i <= endPage + 1; i++) {
-        pageNumbers.push(
-          <StyledElement
-            onClick={() => setPage(i)}
-            selected={selected === i ? true : false}
-            key={i}>
-            {i}
-          </StyledElement>
-        );
-      }
+  if (ellipsis) {
+    let startPage = 1;
+    let siblingPage = 3;
 
-      pageNumbers.push(
-        <StyledElement key={Math.random()} selected={false}>
-          ...
-        </StyledElement>
-      );
-
-      for (let i = totalPages - 2; i <= totalPages; i++) {
-        pageNumbers.push(
-          <StyledElement
-            onClick={() => setPage(i)}
-            selected={selected === i ? true : false}
-            key={i}>
-            {i}
-          </StyledElement>
-        );
-      }
+    if (selectedPage - 1 > 0) {
+      startPage = selectedPage - 1;
+      siblingPage = selectedPage + 1;
     }
+
+    addPageToArr(startPage, siblingPage);
+
+    pageNumbers.push(
+      <StyledElement key={"ellipsis"} selected={false}>
+        ...
+      </StyledElement>
+    );
+
+    addPageToArr(totalPages - 2, totalPages);
+  } else {
+    if (totalPages <= 7) addPageToArr(1, totalPages);
+    else addPageToArr(totalPages - 6, totalPages);
   }
 
   return (
     <StyledPaginationContainer>
-      <StyledTag disabled={selected === 1} onClick={() => setPage(1)}>
+      <StyledTag
+        disabled={selectedPage === 1}
+        onClick={() => setSelectedPageHandler(1)}>
         First
       </StyledTag>
       {pageNumbers}
       <StyledTag
-        disabled={selected === totalPages}
-        onClick={() => setPage(totalPages)}>
+        disabled={selectedPage === totalPages}
+        onClick={() => setSelectedPageHandler(totalPages)}>
         Last
       </StyledTag>
     </StyledPaginationContainer>

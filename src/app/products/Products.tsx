@@ -24,7 +24,7 @@ export const Products = () => {
 
   useEffect(() => {
     const params = `?search=${searchValue}&limit=8&page=${selectedPage}&promo=${isPromo}&active=${isActive}`;
-
+    console.log(params);
     dispatch(fetchProduct(params));
   }, [searchValue, isPromo, isActive, selectedPage]);
 
@@ -44,12 +44,12 @@ export const Products = () => {
       <StyledBody>
         {products.items.length === 0 && !loading ? <NoProducts /> : null}
         <ProductList products={products.items} />
-        <Pagination
-          totalPages={products.meta.totalPages}
-          totalItems={products.meta.totalItems}
-          itemsPerPage={8}
-          selectedPageHandler={(page: number) => setSelectedPage(page)}
-        />
+        {products.items.length > 0 ? (
+          <Pagination
+            totalPages={products.meta.totalPages}
+            selectedPageHandler={(page: number) => setSelectedPage(page)}
+          />
+        ) : null}
       </StyledBody>
     </StyledProducts>
   );
