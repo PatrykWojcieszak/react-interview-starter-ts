@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { ProductTypes } from "./Product.types";
 import { ReactComponent as Cross } from "../../../../styles/icons/cross.svg";
 
-export const Product = ({ img, title, description, close }: ProductTypes) => {
+export const Product = ({
+  img,
+  name: title,
+  description,
+  close,
+}: ProductTypes) => {
   return (
     <StyledProduct>
       <StyledCross onClick={close} />

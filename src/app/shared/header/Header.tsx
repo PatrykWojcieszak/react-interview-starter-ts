@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { device } from "styles/breakpoints";
 
 import { Avatar } from "./avatar/Avatar";
-import { Filtering } from "./filtering/Filtering";
+import { HeaderProps } from "./Header.types";
 
-export const Header = () => {
+export const Header = ({ children }: HeaderProps) => {
   return (
     <StyledHeaderContainer>
       <StyledCompanyName>join.tsh.io</StyledCompanyName>
-      <Filtering />
+      {children}
       <Avatar />
     </StyledHeaderContainer>
   );

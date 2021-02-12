@@ -12,13 +12,19 @@ import { Typography } from "./styles/themeFonts";
 import { mainTheme } from "./styles/themeColors";
 import { GlobalStyle } from "styles/global";
 
+//STORE
+import { Provider } from "react-redux";
+import { store } from "./store/configureStore";
+
 ReactDOM.render(
-  <AppProviders>
-    <ThemeProvider theme={{ fonts: Typography, colors: mainTheme }}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
-  </AppProviders>,
+  <Provider store={store}>
+    <AppProviders>
+      <ThemeProvider theme={{ fonts: Typography, colors: mainTheme }}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </AppProviders>
+  </Provider>,
   document.getElementById("root")
 );
 
