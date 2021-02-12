@@ -5,10 +5,11 @@ import { PaginationProps } from "./Pagination.types";
 export const Pagination = ({
   totalPages,
   selectedPageHandler,
+  totalItems,
+  itemsPerPage,
 }: PaginationProps) => {
   const [selected, setSelected] = useState(1);
-
-  const numbers: JSX.Element[] = [];
+  const pageNumbers: JSX.Element[] = [];
 
   const setPage = (page: number) => {
     setSelected(page);
@@ -17,7 +18,7 @@ export const Pagination = ({
 
   if (totalPages <= 7) {
     for (let i = 1; i <= totalPages; i++) {
-      numbers.push(
+      pageNumbers.push(
         <StyledElement
           onClick={() => setPage(i)}
           selected={selected === i ? true : false}
@@ -29,7 +30,7 @@ export const Pagination = ({
   } else {
     if (totalPages - selected < 6) {
       for (let i = totalPages - 6; i <= totalPages; i++) {
-        numbers.push(
+        pageNumbers.push(
           <StyledElement
             onClick={() => setPage(i)}
             selected={selected === i ? true : false}
@@ -48,8 +49,7 @@ export const Pagination = ({
       }
 
       for (let i = startPage - 1; i <= endPage + 1; i++) {
-        // console.log(i);
-        numbers.push(
+        pageNumbers.push(
           <StyledElement
             onClick={() => setPage(i)}
             selected={selected === i ? true : false}
@@ -59,14 +59,14 @@ export const Pagination = ({
         );
       }
 
-      numbers.push(
+      pageNumbers.push(
         <StyledElement key={Math.random()} selected={false}>
           ...
         </StyledElement>
       );
 
       for (let i = totalPages - 2; i <= totalPages; i++) {
-        numbers.push(
+        pageNumbers.push(
           <StyledElement
             onClick={() => setPage(i)}
             selected={selected === i ? true : false}
@@ -80,29 +80,39 @@ export const Pagination = ({
 
   return (
     <StyledPaginationContainer>
-      <StyledTag onClick={() => setPage(1)}>First</StyledTag>
-      {numbers}
-      <StyledTag onClick={() => setPage(totalPages)}>Last</StyledTag>
+      <StyledTag disabled={selected === 1} onClick={() => setPage(1)}>
+        First
+      </StyledTag>
+      {pageNumbers}
+      <StyledTag
+        disabled={selected === totalPages}
+        onClick={() => setPage(totalPages)}>
+        Last
+      </StyledTag>
     </StyledPaginationContainer>
   );
 };
 
 const StyledPaginationContainer = styled.div`
+  margin-top: 56px;
   display: flex;
   align-items: center;
 `;
 
-const StyledTag = styled.label`
-  color: ${({ theme }) => theme.colors?.darkGrey};
-  font-size: 16px;
-  line-height: 18px;
-  margin: 0 10px;
-  cursor: pointer;
+const StyledTag = styled.label<{ disabled: boolean }>`
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.colors?.darkGrey : theme.colors?.black};
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 33px;
+  cursor: ${({ disabled }) => (disabled ? "auto" : "pointer")};
 `;
 
 const StyledElement = styled.label<{ selected: boolean }>`
   color: ${({ theme, selected }) =>
     selected ? theme.colors?.darkBlue : theme.colors?.black};
-  margin: 0 10px;
+  margin: 0 8px;
   cursor: pointer;
+  font-size: 14px;
+  line-height: 16px;
 `;

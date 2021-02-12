@@ -46,6 +46,8 @@ export const Products = () => {
         <ProductList products={products.items} />
         <Pagination
           totalPages={products.meta.totalPages}
+          totalItems={products.meta.totalItems}
+          itemsPerPage={8}
           selectedPageHandler={(page: number) => setSelectedPage(page)}
         />
       </StyledBody>
