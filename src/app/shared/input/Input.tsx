@@ -13,10 +13,11 @@ export const Input = ({
   label,
   type,
   className,
+  onEnterHandler,
 }: InputProps) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      console.log((event.target as HTMLInputElement).value);
+      onEnterHandler((event.target as HTMLInputElement).value);
     }
   };
 

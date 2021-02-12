@@ -12,7 +12,6 @@ export const Checkbox = ({
   checkedHandler,
 }: CheckboxProps) => {
   const checkboxChangedHandler = (event: boolean) => {
-    console.log("checked");
     checkedHandler(event);
   };
 

@@ -4,11 +4,15 @@ import { InputTypes } from "app/shared/input/Input.types";
 import styled from "styled-components";
 import { Checkbox } from "app/shared/checkbox/Checkbox";
 import { device } from "styles/breakpoints";
+import { FilteringProps } from "./Filtering.types";
 
-export const Filtering = () => {
-  const [isPromo, setIsPromo] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-
+export const Filtering = ({
+  isActive,
+  isPromo,
+  isActiveHandler,
+  isPromoHandler,
+  searchHandler,
+}: FilteringProps) => {
   return (
     <StyledFilteringContainer>
       <StyledInput
@@ -17,19 +21,20 @@ export const Filtering = () => {
         showIcon
         type={InputTypes.text}
         placeholder="Search"
+        onEnterHandler={(value: string) => searchHandler(value)}
       />
       <StyledCheckboxContainer>
         <Checkbox
           name="promo"
           checked={isPromo}
           label="Promo"
-          checkedHandler={(checked: boolean) => setIsPromo(checked)}
+          checkedHandler={(checked: boolean) => isPromoHandler(checked)}
         />
         <Checkbox
           name="active"
           checked={isActive}
           label="Active"
-          checkedHandler={(checked: boolean) => setIsActive(checked)}
+          checkedHandler={(checked: boolean) => isActiveHandler(checked)}
         />
       </StyledCheckboxContainer>
     </StyledFilteringContainer>

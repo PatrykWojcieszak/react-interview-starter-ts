@@ -36,6 +36,7 @@ export const Login = () => {
               placeholder="Enter username"
               label="Username"
               type={InputTypes.text}
+              onEnterHandler={() => {}}
             />
             <StyledInputField
               as={Input}
@@ -43,6 +44,7 @@ export const Login = () => {
               placeholder="Enter password"
               label="Password"
               type={InputTypes.password}
+              onEnterHandler={() => {}}
             />
             <StyledButton
               as={Button}

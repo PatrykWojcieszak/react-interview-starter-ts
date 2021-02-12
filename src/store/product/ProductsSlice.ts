@@ -1,12 +1,12 @@
-import { ProductDto } from "./../../types/ProductDto";
-import { QueryResultDto } from "./../../types/QueryResultDto";
+import { ProductDto } from "../../types/ProductDto";
+import { QueryResultDto } from "../../types/QueryResultDto";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "store/configureStore";
 import { ProductState } from "./ProductSlice.types";
 import { getData, PRODUCT } from "api/api";
 
 const initialState: ProductState = {
-  product: {
+  products: {
     items: [],
     meta: {
       totalItems: 0,
@@ -26,7 +26,7 @@ const initialState: ProductState = {
 };
 
 const product = createSlice({
-  name: "product",
+  name: "products",
   initialState,
   reducers: {
     getProductStart(state) {
@@ -36,7 +36,7 @@ const product = createSlice({
       state,
       action: PayloadAction<QueryResultDto<ProductDto>>
     ) {
-      state.product = action.payload;
+      state.products = action.payload;
       state.loading = false;
     },
     getProductFail(state) {

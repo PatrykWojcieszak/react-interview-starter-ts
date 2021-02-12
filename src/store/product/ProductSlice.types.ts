@@ -1,6 +1,6 @@
 import { QueryResultDto, ProductDto } from "./../../types";
 
 export interface ProductState {
-  product: QueryResultDto<ProductDto>;
+  products: QueryResultDto<ProductDto>;
   loading: boolean;
 }
