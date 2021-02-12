@@ -11,24 +11,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
 import { fetchProduct } from "store/product/ProductsSlice";
 import { Filtering } from "app/shared/filtering/Filtering";
+import { Pagination } from "app/shared/pagination/Pagination";
 
 export const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [selectedPage, setSelectedPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
 
   const { products, loading } = useSelector((root: RootState) => root.products);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProduct("?limit=8&page=1&promo=false&active=false"));
-  }, []);
-
-  useEffect(() => {
-    const params = `?search=${searchValue}&limit=8&page=1&promo=${isPromo}&active=${isActive}`;
+    const params = `?search=${searchValue}&limit=8&page=${selectedPage}&promo=${isPromo}&active=${isActive}`;
 
     dispatch(fetchProduct(params));
-  }, [searchValue, isPromo, isActive]);
+  }, [searchValue, isPromo, isActive, selectedPage]);
 
   return (
     <StyledProducts>
@@ -46,6 +44,10 @@ export const Products = () => {
       <StyledBody>
         {products.items.length === 0 && !loading ? <NoProducts /> : null}
         <ProductList products={products.items} />
+        <Pagination
+          totalPages={products.meta.totalPages}
+          selectedPageHandler={(page: number) => setSelectedPage(page)}
+        />
       </StyledBody>
     </StyledProducts>
   );
@@ -58,6 +60,7 @@ const StyledProducts = styled.div`
 
 const StyledBody = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 24px;
