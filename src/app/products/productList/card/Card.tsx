@@ -6,7 +6,6 @@ import { device } from "styles/breakpoints";
 import { CardProps } from "./Card.types";
 import { Details } from "./details/Details";
 
-import { Image } from "./image/Image";
 import { Rating } from "./rating/Rating";
 
 export const Card = ({ product }: CardProps) => {
@@ -16,14 +15,20 @@ export const Card = ({ product }: CardProps) => {
 
   return (
     <StyledCard>
-      <Image img={product.image} />
+      {product.promo && <StyledPromo>Promo</StyledPromo>}
+      <StyledImage
+        src={product.image}
+        alt="product"
+        isActive={product.active}
+      />
       <StyledBody>
         <Details title={product.name} description={product.description} />
         <StyledStickyBottom>
           <Rating rating={product.rating} />
           <Button
             name="showDetails"
-            text="Show details"
+            text={product.active ? "Show details" : "Unavailable"}
+            disabled={!product.active}
             clicked={btnClicked}
             styleType={BtnStyleTypes.primary}
           />
@@ -41,10 +46,23 @@ const StyledCard = styled.div`
   max-height: 400px;
   min-height: 400px;
   border-radius: 8px;
+  position: relative;
 
   @media ${device.laptop} {
     width: 288px;
   }
+`;
+
+const StyledPromo = styled.span`
+  padding: 4px 16px;
+  background-color: ${({ theme }) => theme.colors?.yellow};
+  color: ${({ theme }) => theme.colors?.white};
+  font-size: 14px;
+  line-height: 16px;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  z-index: 900;
 `;
 
 const StyledBody = styled.div`
@@ -57,4 +75,12 @@ const StyledStickyBottom = styled.div`
   > :last-child {
     margin-top: 18px;
   }
+`;
+
+const StyledImage = styled.img<{ isActive: boolean }>`
+  height: 170px;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  mix-blend-mode: normal;
+  opacity: ${({ isActive }) => (isActive ? 1 : 0.5)};
 `;
