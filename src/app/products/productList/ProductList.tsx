@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { device } from "styles/breakpoints";
 import { Card } from "./card/Card";
 import { Product } from "./product/Product";
+import { ProductListProps } from "./ProductList.types";
 
-export const ProductList = () => {
+export const ProductList = ({ products }: ProductListProps) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -18,14 +19,10 @@ export const ProductList = () => {
           description="Buying Used Electronic Test Equipment What S The Difference Between Used Refurbished Remarketed And Rebuilt"
         />
       </Modal>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+
+      {products.map((product) => (
+        <Card key={product.id} product={product} />
+      ))}
     </StyledProductList>
   );
 };

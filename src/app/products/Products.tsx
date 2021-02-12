@@ -28,7 +28,7 @@ export const Products = () => {
       <Header />
       <StyledBody>
         {/* <NoProducts /> */}
-        <ProductList />
+        <ProductList products={product.items} />
       </StyledBody>
     </StyledProducts>
   );
