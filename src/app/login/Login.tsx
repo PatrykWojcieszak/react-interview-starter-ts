@@ -18,7 +18,7 @@ import { useLocalStorage } from "hooks";
 //STYLES
 import { flexCenterHorizontally, flexColumn } from "styles/mixins";
 
-export const Login = () => {
+const Login = () => {
   const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("loggedIn", false);
 
@@ -68,6 +68,8 @@ export const Login = () => {
     </StyledLoginContainer>
   );
 };
+
+export default Login;
 
 const StyledLoginContainer = styled.div`
   height: 100vh;

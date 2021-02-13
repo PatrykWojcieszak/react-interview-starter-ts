@@ -18,7 +18,7 @@ import { fetchProduct } from "store/product/ProductsSlice";
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
 
-export const Products = () => {
+const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [selectedPage, setSelectedPage] = useState(1);
@@ -57,6 +57,8 @@ export const Products = () => {
     </StyledProducts>
   );
 };
+
+export default Products;
 
 const StyledProducts = styled.div`
   background-color: ${({ theme }) => theme.colors?.background};
