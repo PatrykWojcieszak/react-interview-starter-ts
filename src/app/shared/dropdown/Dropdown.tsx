@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { DropdownProps } from "./Dropdown.types";
 
-export const Dropdown = ({ children, className }: DropdownProps) => {
-  return <StyledDropdown className={className}>{children}</StyledDropdown>;
+export const Dropdown = ({ children, className, reference }: DropdownProps) => {
+  return (
+    <StyledDropdown ref={reference} className={className}>
+      {children}
+    </StyledDropdown>
+  );
 };
 
 const StyledDropdown = styled.div`
