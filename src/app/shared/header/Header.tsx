@@ -19,6 +19,7 @@ export const Header = ({ children }: HeaderProps) => {
 };
 
 const StyledHeaderContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 248px;
