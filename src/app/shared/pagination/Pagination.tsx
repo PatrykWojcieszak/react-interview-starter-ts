@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 //TYPES
@@ -7,13 +7,12 @@ import { PaginationProps } from "./Pagination.types";
 export const Pagination = ({
   totalPages,
   selectedPageHandler,
+  selectedPage,
 }: PaginationProps) => {
-  const [selectedPage, setSelectedPage] = useState(1);
   const pageNumbers: JSX.Element[] = [];
   let ellipsis = false; //separator between page numbers
 
   const setSelectedPageHandler = (page: number) => {
-    setSelectedPage(page);
     selectedPageHandler(page);
   };
 

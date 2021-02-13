@@ -45,6 +45,7 @@ export const Products = () => {
         <ProductList products={products.items} loading={loading} />
         {products.items.length > 0 && !loading ? (
           <Pagination
+            selectedPage={selectedPage}
             totalPages={products.meta.totalPages}
             selectedPageHandler={(page: number) => setSelectedPage(page)}
           />
