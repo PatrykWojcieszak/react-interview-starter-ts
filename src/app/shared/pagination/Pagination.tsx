@@ -4,6 +4,9 @@ import styled from "styled-components";
 //TYPES
 import { PaginationProps } from "./Pagination.types";
 
+//STYLES
+import { flexCenterVertically } from "styles/mixins";
+
 export const Pagination = ({
   totalPages,
   selectedPageHandler,
@@ -71,10 +74,8 @@ export const Pagination = ({
   );
 };
 
-const StyledPaginationContainer = styled.div`
+const StyledPaginationContainer = styled(flexCenterVertically)`
   margin-top: 56px;
-  display: flex;
-  align-items: center;
 `;
 
 const StyledTag = styled.label<{ disabled: boolean }>`

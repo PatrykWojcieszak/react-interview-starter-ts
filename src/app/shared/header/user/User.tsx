@@ -13,6 +13,9 @@ import { device } from "styles/breakpoints";
 //HOOKS
 import { useClickOutside, useLocalStorage } from "hooks";
 
+//STYLES
+import { flexColumn } from "styles/mixins";
+
 export const User = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("loggedIn", true);
@@ -54,12 +57,10 @@ export const User = () => {
   );
 };
 
-const StyledUserContainer = styled.div`
+const StyledUserContainer = styled(flexColumn)`
   position: absolute;
   top: 48px;
   right: 24px;
-  display: flex;
-  flex-direction: column;
   align-items: flex-end;
 
   @media ${device.laptop} {

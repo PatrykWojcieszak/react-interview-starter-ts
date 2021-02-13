@@ -15,6 +15,9 @@ import { AppRoute } from "routing/AppRoute.enum";
 //HOOKS
 import { useLocalStorage } from "hooks";
 
+//STYLES
+import { flexCenterHorizontally, flexColumn } from "styles/mixins";
+
 export const Login = () => {
   const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("loggedIn", false);
@@ -99,9 +102,7 @@ const StyledCompanyName = styled.h2`
   color: ${({ theme }) => theme.colors?.black};
 `;
 
-const StyledLoginFormContainer = styled.div`
-  display: flex;
-  justify-content: center;
+const StyledLoginFormContainer = styled(flexCenterHorizontally)`
   width: 100%;
   align-items: center;
   margin-top: 103px;
@@ -112,10 +113,8 @@ const StyledLoginFormContainer = styled.div`
   }
 `;
 
-const StyledLoginFormWrapper = styled.div`
+const StyledLoginFormWrapper = styled(flexColumn)`
   flex-basis: 496px;
-  display: flex;
-  flex-direction: column;
 `;
 
 const StyledLogin = styled.h2`

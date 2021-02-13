@@ -4,6 +4,9 @@ import styled from "styled-components/macro";
 //ICON
 import { ReactComponent as TaskListPlain } from "../../../../styles/icons/task-list-plain.svg";
 
+//STYLES
+import { flexColumnCenter } from "styles/mixins";
+
 export const NoProducts = () => {
   return (
     <StyledNoProductsContainer>
@@ -14,17 +17,13 @@ export const NoProducts = () => {
   );
 };
 
-const StyledNoProductsContainer = styled.div`
+const StyledNoProductsContainer = styled(flexColumnCenter)`
   background-color: ${({ theme }) => theme.colors?.white};
   border-radius: 8px;
   min-width: 327px;
   max-width: 600px;
   width: 100%;
   height: 344px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 const StyledTitle = styled.h2`

@@ -8,6 +8,9 @@ import { User } from "./user/User";
 import { device } from "styles/breakpoints";
 import { HeaderProps } from "./Header.types";
 
+//STYLES
+import { flexColumn } from "styles/mixins";
+
 export const Header = ({ children }: HeaderProps) => {
   return (
     <StyledHeaderContainer>
@@ -18,10 +21,8 @@ export const Header = ({ children }: HeaderProps) => {
   );
 };
 
-const StyledHeaderContainer = styled.div`
+const StyledHeaderContainer = styled(flexColumn)`
   position: relative;
-  display: flex;
-  flex-direction: column;
   height: 248px;
   padding: 24px;
   background-color: ${({ theme }) => theme.colors?.white};

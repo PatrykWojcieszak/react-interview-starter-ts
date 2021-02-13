@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
 import { fetchProduct } from "store/product/ProductsSlice";
 
+//STYLES
+import { flexColumnCenter } from "styles/mixins";
+
 export const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -60,11 +63,7 @@ const StyledProducts = styled.div`
   height: 100vh;
 `;
 
-const StyledBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+const StyledBody = styled(flexColumnCenter)`
   padding: 24px;
 
   @media ${device.laptop} {

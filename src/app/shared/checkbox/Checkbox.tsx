@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { flexCenterVertically } from "styles/mixins";
 
 //ICON
 import { ReactComponent as CheckedIcon } from "../../../styles/icons/checked.svg";
@@ -27,10 +28,7 @@ export const Checkbox = ({
   );
 };
 
-const CheckboxContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
+const CheckboxContainer = styled(flexCenterVertically)``;
 
 const StyledLabel = styled.label`
   margin-left: 8px;

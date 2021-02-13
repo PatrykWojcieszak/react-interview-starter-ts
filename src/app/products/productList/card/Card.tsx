@@ -11,6 +11,9 @@ import { BtnStyleTypes } from "app/shared/button/Button.types";
 import { device } from "styles/breakpoints";
 import { CardProps } from "./Card.types";
 
+//STYLES
+import { flexColumn } from "styles/mixins";
+
 export const Card = ({ product, showDetailsHandler }: CardProps) => {
   return (
     <StyledCard>
@@ -37,9 +40,7 @@ export const Card = ({ product, showDetailsHandler }: CardProps) => {
   );
 };
 
-const StyledCard = styled.div`
-  display: flex;
-  flex-direction: column;
+const StyledCard = styled(flexColumn)`
   background-color: ${({ theme }) => theme.colors?.white};
   width: 327px;
   max-height: 400px;

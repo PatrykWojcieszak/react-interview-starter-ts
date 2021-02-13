@@ -10,6 +10,9 @@ import { InputTypes } from "app/shared/input/Input.types";
 import { device } from "styles/breakpoints";
 import { FilteringProps } from "./Filtering.types";
 
+//STYLES
+import { flexColumn } from "styles/mixins";
+
 export const Filtering = ({
   isActive,
   isPromo,
@@ -50,12 +53,10 @@ const StyledInput = styled.div`
   flex-basis: 392px;
 `;
 
-const StyledFilteringContainer = styled.div`
-  display: flex;
+const StyledFilteringContainer = styled(flexColumn)`
   justify-content: center;
   margin-top: 28px;
   width: 100%;
-  flex-direction: column;
 
   @media ${device.laptop} {
     align-items: center;

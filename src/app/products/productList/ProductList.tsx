@@ -12,6 +12,9 @@ import { NoProducts } from "./noProducts/NoProducts";
 import { ProductListProps } from "./ProductList.types";
 import { useClickOutside } from "hooks";
 
+//STYLES
+import { flexCenterHorizontally } from "styles/mixins";
+
 export const ProductList = ({ products, loading }: ProductListProps) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(0);
@@ -57,10 +60,8 @@ export const ProductList = ({ products, loading }: ProductListProps) => {
   );
 };
 
-const StyledProductList = styled.div`
+const StyledProductList = styled(flexCenterHorizontally)`
   width: 100%;
-  display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
 `;
