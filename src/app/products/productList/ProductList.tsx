@@ -1,9 +1,12 @@
-import { Modal } from "app/shared/modal/Modal";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { device } from "styles/breakpoints";
+
+//COMPONENTS
+import { Modal } from "app/shared/modal/Modal";
 import { Card } from "./card/Card";
 import { Product } from "./product/Product";
+
+//TYPES
 import { ProductListProps } from "./ProductList.types";
 
 export const ProductList = ({ products }: ProductListProps) => {

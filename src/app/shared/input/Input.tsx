@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "styles/breakpoints";
 
+//ICON
 import { ReactComponent as SearchIcon } from "../../../styles/icons/search.svg";
 
+//TYPES
 import { InputProps } from "./Input.types";
 
 export const Input = ({

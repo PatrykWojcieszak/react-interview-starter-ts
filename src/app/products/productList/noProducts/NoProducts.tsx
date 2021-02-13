@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+//ICON
 import { ReactComponent as TaskListPlain } from "../../../../styles/icons/task-list-plain.svg";
 
 export const NoProducts = () => {

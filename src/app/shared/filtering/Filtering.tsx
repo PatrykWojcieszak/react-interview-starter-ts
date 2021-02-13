@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { Input } from "app/shared/input/Input";
-import { InputTypes } from "app/shared/input/Input.types";
+import React from "react";
 import styled from "styled-components";
+
+//COMPONENTS
+import { Input } from "app/shared/input/Input";
 import { Checkbox } from "app/shared/checkbox/Checkbox";
+
+//TYPES
+import { InputTypes } from "app/shared/input/Input.types";
 import { device } from "styles/breakpoints";
 import { FilteringProps } from "./Filtering.types";
 

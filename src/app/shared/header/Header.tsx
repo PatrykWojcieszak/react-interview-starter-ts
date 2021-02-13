@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "styles/breakpoints";
 
-import { HeaderProps } from "./Header.types";
-
+//COMPONENTS
 import { User } from "./user/User";
+
+//TYPEs
+import { device } from "styles/breakpoints";
+import { HeaderProps } from "./Header.types";
 
 export const Header = ({ children }: HeaderProps) => {
   return (

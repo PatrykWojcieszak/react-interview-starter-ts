@@ -1,12 +1,15 @@
-import { Button } from "app/shared/button/Button";
-import { BtnStyleTypes } from "app/shared/button/Button.types";
 import React from "react";
 import styled from "styled-components";
+
+//COMPONENTS
+import { Button } from "app/shared/button/Button";
+import { Details } from "./details/Details";
+import { Rating } from "./rating/Rating";
+
+//TYPES
+import { BtnStyleTypes } from "app/shared/button/Button.types";
 import { device } from "styles/breakpoints";
 import { CardProps } from "./Card.types";
-import { Details } from "./details/Details";
-
-import { Rating } from "./rating/Rating";
 
 export const Card = ({ product, showDetailsHandler }: CardProps) => {
   return (

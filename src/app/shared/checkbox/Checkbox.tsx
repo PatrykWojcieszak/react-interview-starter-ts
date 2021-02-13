@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+//ICON
 import { ReactComponent as CheckedIcon } from "../../../styles/icons/checked.svg";
 
+//TYPES
 import { CheckboxProps } from "./Checkbox.types";
 
 export const Checkbox = ({

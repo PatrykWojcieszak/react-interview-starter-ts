@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+
+//TYPES
 import { ModalProps } from "./Modal.types";
 
 export const Modal = ({ children, show, close }: ModalProps) => {

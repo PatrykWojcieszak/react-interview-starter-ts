@@ -1,17 +1,19 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
 import styled from "styled-components";
 
+//COMPONENTS
 import { Button } from "app/shared/button/Button";
 import { Input } from "app/shared/input/Input";
 
+//TYPES
 import { device } from "styles/breakpoints";
-
-import { AppRoute } from "routing/AppRoute.enum";
-import { BtnStyleTypes } from "app/shared/button/Button.types";
 import { InputTypes } from "app/shared/input/Input.types";
-import { useLocalStorage } from "hooks/useLocalStorage";
+import { BtnStyleTypes } from "app/shared/button/Button.types";
+import { AppRoute } from "routing/AppRoute.enum";
+
+//HOOKS
+import { useLocalStorage } from "hooks";
 
 export const Login = () => {
   const history = useHistory();

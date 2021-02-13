@@ -1,20 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { ProductTypes } from "./Product.types";
+
+//ICON
 import { ReactComponent as Cross } from "../../../../styles/icons/cross.svg";
 
-export const Product = ({
-  img,
-  name: title,
-  description,
-  close,
-}: ProductTypes) => {
+//TYPES
+import { ProductTypes } from "./Product.types";
+
+export const Product = ({ img, name, description, close }: ProductTypes) => {
   return (
     <StyledProduct>
       <StyledCross onClick={close} />
       <StyledImage src={img} />
       <StyledBody>
-        <StyledTitle>{title}</StyledTitle>
+        <StyledTitle>{name}</StyledTitle>
         <StyledDescription>{description}</StyledDescription>
       </StyledBody>
     </StyledProduct>

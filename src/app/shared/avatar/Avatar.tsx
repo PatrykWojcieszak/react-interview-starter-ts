@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+
+//TYPES
 import { AvatarProps } from "./Avatar.types";
 
 export const Avatar = ({ clicked }: AvatarProps) => {

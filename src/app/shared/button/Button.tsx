@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+//TYPES
 import { BtnStyleTypes, ButtonProps } from "./Button.types";
 
 export const Button = ({

@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-import { AppRoute } from "routing/AppRoute.enum";
-import { ProductList } from "./productList/ProductList";
-import { Header } from "app/shared/header/Header";
 import styled from "styled-components";
+
+//COMPONENTS
+import { ProductList } from "./productList/ProductList";
 import { NoProducts } from "./productList/noProducts/NoProducts";
+import { Header } from "app/shared/header/Header";
+import { Filtering } from "app/shared/filtering/Filtering";
+import { Pagination } from "app/shared/pagination/Pagination";
+
+//TYPeS
 import { device } from "styles/breakpoints";
+
+//REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
 import { fetchProduct } from "store/product/ProductsSlice";
-import { Filtering } from "app/shared/filtering/Filtering";
-import { Pagination } from "app/shared/pagination/Pagination";
 
 export const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
@@ -30,8 +33,6 @@ export const Products = () => {
 
   return (
     <StyledProducts>
-      {/* <h2>Products page</h2>
-      <Link to={AppRoute.login}> Login </Link> */}
       <Header>
         <Filtering
           isActive={isActive}

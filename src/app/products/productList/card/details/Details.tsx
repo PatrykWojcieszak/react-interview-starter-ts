@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+//TYPES
 import { DetailsProps } from "./Details.types";
 
 export const Details = ({ title, description }: DetailsProps) => {

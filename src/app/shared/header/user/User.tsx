@@ -1,12 +1,17 @@
-import { Avatar } from "app/shared/avatar/Avatar";
-import { Button } from "app/shared/button/Button";
-import { BtnStyleTypes } from "app/shared/button/Button.types";
-import { Dropdown } from "app/shared/dropdown/Dropdown";
-import { useClickOutside } from "hooks/useClickOutside";
-import { useLocalStorage } from "hooks/useLocalStorage";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+
+//COMPONENTS
+import { Avatar } from "app/shared/avatar/Avatar";
+import { Button } from "app/shared/button/Button";
+import { Dropdown } from "app/shared/dropdown/Dropdown";
+
+//TYPES
+import { BtnStyleTypes } from "app/shared/button/Button.types";
 import { device } from "styles/breakpoints";
+
+//HOOKS
+import { useClickOutside, useLocalStorage } from "hooks";
 
 export const User = () => {
   const [showDropdown, setShowDropdown] = useState(false);

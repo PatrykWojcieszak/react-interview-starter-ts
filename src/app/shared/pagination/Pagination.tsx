@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
+//TYPES
 import { PaginationProps } from "./Pagination.types";
 
 export const Pagination = ({
