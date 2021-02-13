@@ -4,13 +4,8 @@ import styled from "styled-components";
 //TYPES
 import { ModalProps } from "./Modal.types";
 
-export const Modal = ({ children, show, close }: ModalProps) => {
-  if (show)
-    return (
-      <StyledModal show={show} onClick={close}>
-        {children}
-      </StyledModal>
-    );
+export const Modal = ({ children, show }: ModalProps) => {
+  if (show) return <StyledModal show={show}>{children}</StyledModal>;
 
   return null;
 };

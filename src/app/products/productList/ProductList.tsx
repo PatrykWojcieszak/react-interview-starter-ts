@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components/macro";
 
 //COMPONENTS
@@ -10,20 +10,29 @@ import { NoProducts } from "./noProducts/NoProducts";
 
 //TYPES
 import { ProductListProps } from "./ProductList.types";
+import { useClickOutside } from "hooks";
 
 export const ProductList = ({ products, loading }: ProductListProps) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(0);
+  const ref = useRef(null);
 
   const selectedProductHandler = (id: number) => {
     setSelectedProductId(id);
     setShowModal(true);
   };
 
+  const handleClickOutside = () => {
+    setShowModal(false);
+  };
+
+  useClickOutside(ref, handleClickOutside);
+
   return (
     <StyledProductList>
-      <Modal show={showModal} close={() => setShowModal(false)}>
+      <Modal show={showModal}>
         <Product
+          reference={ref}
           close={() => setShowModal(false)}
           img={products.find((x) => x.id === selectedProductId)?.image}
           name={products.find((x) => x.id === selectedProductId)?.name}

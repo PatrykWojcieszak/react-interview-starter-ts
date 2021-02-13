@@ -7,9 +7,15 @@ import { ReactComponent as Cross } from "../../../../styles/icons/cross.svg";
 //TYPES
 import { ProductTypes } from "./Product.types";
 
-export const Product = ({ img, name, description, close }: ProductTypes) => {
+export const Product = ({
+  img,
+  name,
+  description,
+  close,
+  reference,
+}: ProductTypes) => {
   return (
-    <StyledProduct>
+    <StyledProduct ref={reference}>
       <StyledCross onClick={close} />
       <StyledImage src={img} />
       <StyledBody>
