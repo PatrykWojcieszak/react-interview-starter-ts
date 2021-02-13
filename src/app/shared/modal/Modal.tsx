@@ -17,7 +17,7 @@ export const Modal = ({ children, show, close }: ModalProps) => {
 
 const StyledModal = styled.div<{ show: boolean }>`
   background-color: #1a1b1de5;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   position: fixed;
   top: 0;
