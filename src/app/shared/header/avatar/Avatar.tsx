@@ -17,11 +17,5 @@ const StyledAvatar = styled.img`
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  position: absolute;
-  top: 48px;
-  right: 24px;
-
-  @media ${device.laptop} {
-    right: 105px;
-  }
+  cursor: pointer;
 `;
