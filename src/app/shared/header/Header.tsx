@@ -7,11 +7,12 @@ import { Avatar } from "./avatar/Avatar";
 import { HeaderProps } from "./Header.types";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 import { useLocalStorage } from "hooks/useLocalStorage";
+import { Button } from "../button/Button";
+import { BtnStyleTypes } from "../button/Button.types";
 
 export const Header = ({ children }: HeaderProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("loggedIn", true);
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const ref = useRef(null);
 
   const handleClickOutside = () => {
@@ -20,22 +21,39 @@ export const Header = ({ children }: HeaderProps) => {
 
   useClickOutside(ref, handleClickOutside);
 
+  const loginHandler = () => {
+    setIsLoggedIn(true);
+    setShowDropdown(false);
+  };
+
   return (
     <StyledHeaderContainer>
       <StyledCompanyName>join.tsh.io</StyledCompanyName>
       {children}
       <StyledUserContainer>
-        <StyledAvatar
-          src={process.env.PUBLIC_URL + "/images/avatar.png"}
-          alt="avatar"
-          onClick={() => setShowDropdown(!showDropdown)}
-        />
-        {showDropdown && (
-          <StyledDropdownWrapper reference={ref} as={Dropdown}>
-            <StyledLogout onClick={() => setIsLoggedIn(false)}>
-              Logout
-            </StyledLogout>
-          </StyledDropdownWrapper>
+        {isLoggedIn ? (
+          <>
+            {" "}
+            <StyledAvatar
+              src={process.env.PUBLIC_URL + "/images/avatar.png"}
+              alt="avatar"
+              onClick={() => setShowDropdown(!showDropdown)}
+            />
+            {showDropdown && (
+              <StyledDropdownWrapper reference={ref} as={Dropdown}>
+                <StyledLogout onClick={() => setIsLoggedIn(false)}>
+                  Logout
+                </StyledLogout>
+              </StyledDropdownWrapper>
+            )}
+          </>
+        ) : (
+          <Button
+            styleType={BtnStyleTypes.secondary}
+            text="Log in"
+            name="login"
+            clicked={loginHandler}
+          />
         )}
       </StyledUserContainer>
     </StyledHeaderContainer>

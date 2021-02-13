@@ -11,12 +11,15 @@ import { device } from "styles/breakpoints";
 import { AppRoute } from "routing/AppRoute.enum";
 import { BtnStyleTypes } from "app/shared/button/Button.types";
 import { InputTypes } from "app/shared/input/Input.types";
+import { useLocalStorage } from "hooks/useLocalStorage";
 
 export const Login = () => {
   const history = useHistory();
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage("loggedIn", false);
 
   const loginClickHandler = () => {
     history.push(AppRoute.home);
+    setIsLoggedIn(true);
   };
 
   return (

@@ -33,6 +33,7 @@ const StyledButton = styled.button<{ styleType: BtnStyleTypes }>`
   width: 100%;
   font-family: ${({ theme }) => theme.fonts?.family};
   outline: none;
+  padding: 11px 24px;
 
   background-color: ${({ theme, styleType }) =>
     styleType === BtnStyleTypes.primary
