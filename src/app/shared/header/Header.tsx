@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { device } from "styles/breakpoints";
 import { Dropdown } from "../dropdown/Dropdown";
 
 import { Avatar } from "./avatar/Avatar";
 import { HeaderProps } from "./Header.types";
+import { useClickOutside } from "../../../hooks/useClickOutside";
+import { useLocalStorage } from "hooks/useLocalStorage";
 
 export const Header = ({ children }: HeaderProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [logout, setLogout] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage("loggedIn", true);
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const ref = useRef(null);
+
+  const handleClickOutside = () => {
+    setShowDropdown(false);
+  };
+
+  useClickOutside(ref, handleClickOutside);
 
   return (
     <StyledHeaderContainer>
@@ -21,8 +31,10 @@ export const Header = ({ children }: HeaderProps) => {
           onClick={() => setShowDropdown(!showDropdown)}
         />
         {showDropdown && (
-          <StyledDropdownWrapper as={Dropdown}>
-            <StyledLogout onClick={() => setLogout(true)}>Logout</StyledLogout>
+          <StyledDropdownWrapper reference={ref} as={Dropdown}>
+            <StyledLogout onClick={() => setIsLoggedIn(false)}>
+              Logout
+            </StyledLogout>
           </StyledDropdownWrapper>
         )}
       </StyledUserContainer>
