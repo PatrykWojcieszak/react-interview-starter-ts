@@ -29,7 +29,7 @@ export const Products = () => {
     const params = `?search=${searchValue}&limit=8&page=${selectedPage}&promo=${isPromo}&active=${isActive}`;
     console.log(params);
     dispatch(fetchProduct(params));
-  }, [searchValue, isPromo, isActive, selectedPage]);
+  }, [dispatch, searchValue, isPromo, isActive, selectedPage]);
 
   return (
     <StyledProducts>

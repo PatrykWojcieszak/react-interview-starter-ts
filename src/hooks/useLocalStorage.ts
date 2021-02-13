@@ -43,6 +43,7 @@ export const useLocalStorage = <T extends unknown>(
 
   useEffect(() => {
     setStoredValue(readValue());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -57,6 +58,7 @@ export const useLocalStorage = <T extends unknown>(
       window.removeEventListener("storage", handleStorageChange);
       window.removeEventListener("local-storage", handleStorageChange);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [storedValue, setValue];
