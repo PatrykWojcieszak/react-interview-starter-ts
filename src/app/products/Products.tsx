@@ -7,6 +7,7 @@ import { NoProducts } from "./productList/noProducts/NoProducts";
 import { Header } from "app/shared/header/Header";
 import { Filtering } from "app/shared/filtering/Filtering";
 import { Pagination } from "app/shared/pagination/Pagination";
+import { Spinner } from "app/shared/spinner/Spinner";
 
 //TYPeS
 import { device } from "styles/breakpoints";
@@ -43,6 +44,7 @@ export const Products = () => {
         />
       </Header>
       <StyledBody>
+        {loading && <Spinner />}
         {products.items.length === 0 && !loading ? <NoProducts /> : null}
         <ProductList products={products.items} />
         {products.items.length > 0 ? (
