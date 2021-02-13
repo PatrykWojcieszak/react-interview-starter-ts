@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 //ICON
 import { ReactComponent as TaskListPlain } from "../../../../styles/icons/task-list-plain.svg";
@@ -18,8 +18,8 @@ const StyledNoProductsContainer = styled.div`
   background-color: ${({ theme }) => theme.colors?.white};
   border-radius: 8px;
   min-width: 327px;
-  width: 100%;
   max-width: 600px;
+  width: 100%;
   height: 344px;
   display: flex;
   flex-direction: column;
