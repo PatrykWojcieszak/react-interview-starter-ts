@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-//ICON
+//ICONS
 import { ReactComponent as SpinnerIcon } from "../../../styles/icons/spinner.svg";
 import { ReactComponent as SpinnerOvalIcon } from "../../../styles/icons/spinnerOval.svg";
 

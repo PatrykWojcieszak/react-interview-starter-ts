@@ -17,6 +17,11 @@ import { Provider } from "react-redux";
 import { store } from "./store/configureStore";
 
 ReactDOM.render(
+  //Redux is overkill for this kinda app, that small.
+  //And I would use different state management system for smaller apps
+  //But in PDF it says to take into consideration, that this app
+  //might be further developed. That's why I choose to use Redux
+  //I think it might make things easier in the future when this app grows up.
   <Provider store={store}>
     <AppProviders>
       <ThemeProvider theme={{ fonts: Typography, colors: mainTheme }}>

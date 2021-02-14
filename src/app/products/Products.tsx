@@ -30,6 +30,10 @@ const Products = () => {
   useEffect(() => {
     const params = `?search=${searchValue}&limit=8&page=${selectedPage}&promo=${isPromo}&active=${isActive}`;
 
+    //There's situation when you type 1 or 2 characters into search(for example "te")
+    //and API returns objects with promo and active having true or false value
+    //even when in query params, they're false. I would fix it by setting minimum characters length
+    //and show an error but there's no design for error on Figma, so I left it.
     dispatch(fetchProduct(params));
   }, [dispatch, searchValue, isPromo, isActive, selectedPage]);
 

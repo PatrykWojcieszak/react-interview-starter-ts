@@ -14,7 +14,7 @@ export const Modal = ({ children, show }: ModalProps) => {
 };
 
 const StyledModal = styled(flexCenter)<{ show: boolean }>`
-  background-color: #1a1b1de5;
+  background-color: #1a1b1de5; //90% opacity
   height: 100%;
   width: 100%;
   position: fixed;
