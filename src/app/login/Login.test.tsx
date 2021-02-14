@@ -1,16 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import { render } from 'tests';
+import { getByAltText, getByRole, render, screen } from "tests";
 
-import { Login } from './Login';
+import Login from "./Login";
 
-describe('Login', () => {
-  test('Displays all information', async () => {
+describe("Login", () => {
+  test("Displays all information", async () => {
     const { getByText, getByLabelText } = render(<Login />);
 
-    expect(getByText('Products page')).toBeInTheDocument();
-    expect(getByText('Products page')).toBeInTheDocument();
-    expect(getByLabelText('username:')).toBeInTheDocument();
-    expect(getByLabelText('password:')).toBeInTheDocument();
+    expect(screen.getByAltText("background")).toBeInTheDocument();
+    expect(getByText("join.tsh.io")).toBeInTheDocument();
+    expect(getByText("Login")).toBeInTheDocument();
+    expect(getByLabelText("Username")).toBeInTheDocument();
+    expect(getByLabelText("Password")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Enter username")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Enter password")).toBeInTheDocument();
+    expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(getByText("Forgot password?")).toBeInTheDocument();
   });
 });

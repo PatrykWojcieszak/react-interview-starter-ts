@@ -24,7 +24,7 @@ export const Input = ({
 
   return (
     <>
-      {label && <StyledLabel>{label}</StyledLabel>}
+      {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
       <StyledInputWrapper className={className}>
         <StyledInput
           onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) =>
@@ -32,6 +32,7 @@ export const Input = ({
           }
           type={type}
           name={name}
+          id={name}
           placeholder={placeholder}
         />
         {showIcon && <SearchIcon />}
