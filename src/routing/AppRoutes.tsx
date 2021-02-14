@@ -1,18 +1,25 @@
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import { Login } from 'app/login/Login';
-import { Products } from 'app/products/Products';
+import { AppRoute } from "./AppRoute.enum";
 
-import { AppRoute } from './AppRoute.enum';
+const Login = React.lazy(() => {
+  return import("app/login/Login");
+});
+
+const Products = React.lazy(() => {
+  return import("app/products/Products");
+});
 
 export const AppRoutes = () => {
   return (
-    <Switch>
-      <Route path={AppRoute.home} exact component={Products} />
-      <Route path={AppRoute.login} component={Login} />
+    <React.Suspense fallback={<p>Loading...</p>}>
+      <Switch>
+        <Route path={AppRoute.home} exact render={() => <Products />} />
+        <Route path={AppRoute.login} render={() => <Login />} />
 
-      <Redirect to={AppRoute.home} />
-    </Switch>
+        <Redirect to={AppRoute.home} />
+      </Switch>
+    </React.Suspense>
   );
 };
