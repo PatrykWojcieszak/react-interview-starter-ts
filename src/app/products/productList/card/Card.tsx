@@ -62,7 +62,7 @@ const StyledPromo = styled.span`
   position: absolute;
   top: 16px;
   left: 0;
-  z-index: 900;
+  z-index: 800;
 `;
 
 const StyledBody = styled.div`
