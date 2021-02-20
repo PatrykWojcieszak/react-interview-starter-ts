@@ -13,7 +13,7 @@ import { device } from "styles/breakpoints";
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
-import { fetchProduct } from "store/product/ProductsSlice";
+import { fetchProduct } from "store/products/ProductsSlice";
 
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
@@ -28,10 +28,12 @@ const Products = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const params = `?search=${searchValue}&limit=8&page=${selectedPage}&promo=${isPromo}&active=${isActive}`;
+    const isPromoQuery = isPromo ? `&promo=${isPromo}` : "";
+    const isActiveQuery = isActive ? `&active=${isActive}` : "";
+    const params = `?search=${searchValue}&limit=8&page=${selectedPage}${isPromoQuery}${isActiveQuery}`;
 
     //There's situation when you type 1 or 2 characters into search(for example "te")
-    //and API returns objects with promo and active having true or false value
+    //and API returns objects with promo and active having true value
     //even when in query params, they're false. I would fix it by setting minimum characters length
     //and show an error but there's no design for error on Figma, so I left it.
     dispatch(fetchProduct(params));
