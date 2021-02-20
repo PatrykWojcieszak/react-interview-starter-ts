@@ -7,7 +7,7 @@ import { Header } from "app/shared/header/Header";
 import { Filtering } from "app/shared/filtering/Filtering";
 import { Pagination } from "app/shared/pagination/Pagination";
 
-//TYPeS
+//TYPES
 import { device } from "styles/breakpoints";
 
 //REDUX
@@ -32,10 +32,6 @@ const Products = () => {
     const isActiveQuery = isActive ? `&active=${isActive}` : "";
     const params = `?search=${searchValue}&limit=8&page=${selectedPage}${isPromoQuery}${isActiveQuery}`;
 
-    //There's situation when you type 1 or 2 characters into search(for example "te")
-    //and API returns objects with promo and active having true value
-    //even when in query params, they're false. I would fix it by setting minimum characters length
-    //and show an error but there's no design for error on Figma, so I left it.
     dispatch(fetchProduct(params));
   }, [dispatch, searchValue, isPromo, isActive, selectedPage]);
 

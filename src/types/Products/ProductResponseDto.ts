@@ -1,4 +1,4 @@
-import { PaginateLinksDto, PaginateMetaDto } from ".";
+import { PaginateLinksDto, PaginateMetaDto } from "..";
 export interface ProductResponseDto<T> {
   items: T[];
   meta: PaginateMetaDto;
