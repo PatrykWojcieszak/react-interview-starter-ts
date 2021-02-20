@@ -44,7 +44,7 @@ const Login = () => {
               placeholder="Enter username"
               label="Username"
               type={InputTypes.text}
-              onEnterHandler={() => {}}
+              onChangeHandler={() => {}}
             />
             <StyledInputField
               as={Input}
@@ -52,7 +52,7 @@ const Login = () => {
               placeholder="Enter password"
               label="Password"
               type={InputTypes.password}
-              onEnterHandler={() => {}}
+              onChangeHandler={() => {}}
             />
             <StyledButton
               as={Button}

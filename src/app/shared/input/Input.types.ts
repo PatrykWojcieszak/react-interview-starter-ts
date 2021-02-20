@@ -11,5 +11,5 @@ export type InputProps = {
   placeholder?: string;
   type: InputTypes;
   className?: string;
-  onEnterHandler: (value: string) => void;
+  onChangeHandler: (value: string) => void;
 };
