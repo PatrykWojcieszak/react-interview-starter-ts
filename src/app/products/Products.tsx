@@ -4,11 +4,12 @@ import styled from "styled-components";
 //COMPONENTS
 import { ProductList } from "./productList/ProductList";
 import { Header } from "app/shared/header/Header";
-import { Filtering } from "app/shared/filtering/Filtering";
+import { Filtering } from "app/products/productList/filtering/Filtering";
 import { Pagination } from "app/shared/pagination/Pagination";
 
 //TYPES
 import { device } from "styles/breakpoints";
+import { ParamsEnum } from "./Params.enum";
 
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -28,9 +29,9 @@ const Products = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const isPromoQuery = isPromo ? `&promo=${isPromo}` : "";
-    const isActiveQuery = isActive ? `&active=${isActive}` : "";
-    const params = `?search=${searchValue}&limit=8&page=${selectedPage}${isPromoQuery}${isActiveQuery}`;
+    const isPromoQuery = isPromo ? `&${ParamsEnum.promo}=${isPromo}` : "";
+    const isActiveQuery = isActive ? `&${ParamsEnum.active}=${isActive}` : "";
+    const params = `?${ParamsEnum.search}=${searchValue}&${ParamsEnum.limit}=8&${ParamsEnum.page}=${selectedPage}${isPromoQuery}${isActiveQuery}`;
 
     dispatch(fetchProduct(params));
   }, [dispatch, searchValue, isPromo, isActive, selectedPage]);
