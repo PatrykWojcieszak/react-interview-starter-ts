@@ -28,7 +28,7 @@ export const Filtering = ({
         showIcon
         type={InputTypes.text}
         placeholder="Search"
-        onEnterHandler={(value: string) => searchHandler(value)}
+        onChangeHandler={(value: string) => searchHandler(value)}
       />
       <StyledCheckboxContainer>
         <Checkbox

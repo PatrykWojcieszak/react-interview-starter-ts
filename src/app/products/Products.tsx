@@ -4,19 +4,23 @@ import styled from "styled-components";
 //COMPONENTS
 import { ProductList } from "./productList/ProductList";
 import { Header } from "app/shared/header/Header";
-import { Filtering } from "app/shared/filtering/Filtering";
+import { Filtering } from "app/products/productList/filtering/Filtering";
 import { Pagination } from "app/shared/pagination/Pagination";
 
-//TYPeS
+//TYPES
 import { device } from "styles/breakpoints";
+import { ParamsEnum } from "./Params.enum";
 
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
-import { fetchProduct } from "store/product/ProductsSlice";
+import { fetchProduct } from "store/products/ProductsSlice";
 
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
+
+//HOOKS
+import { useDebounce } from "hooks/useDebounce";
 
 const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
@@ -24,18 +28,23 @@ const Products = () => {
   const [selectedPage, setSelectedPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
 
+  const debouncedSearchTerm = useDebounce<string>(searchValue, 500);
+
   const { products, loading } = useSelector((root: RootState) => root.products);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const params = `?search=${searchValue}&limit=8&page=${selectedPage}&promo=${isPromo}&active=${isActive}`;
+    const isPromoQuery = isPromo ? `&${ParamsEnum.promo}=${isPromo}` : "";
+    const isActiveQuery = isActive ? `&${ParamsEnum.active}=${isActive}` : "";
+    const params =
+      `?${ParamsEnum.search}=${debouncedSearchTerm}` +
+      `&${ParamsEnum.limit}=8` +
+      `&${ParamsEnum.page}=${selectedPage}` +
+      isPromoQuery +
+      isActiveQuery;
 
-    //There's situation when you type 1 or 2 characters into search(for example "te")
-    //and API returns objects with promo and active having true or false value
-    //even when in query params, they're false. I would fix it by setting minimum characters length
-    //and show an error but there's no design for error on Figma, so I left it.
     dispatch(fetchProduct(params));
-  }, [dispatch, searchValue, isPromo, isActive, selectedPage]);
+  }, [dispatch, debouncedSearchTerm, isPromo, isActive, selectedPage]);
 
   return (
     <StyledProducts>

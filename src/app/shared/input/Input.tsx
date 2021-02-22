@@ -14,21 +14,15 @@ export const Input = ({
   label,
   type,
   className,
-  onEnterHandler,
+  onChangeHandler,
 }: InputProps) => {
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      onEnterHandler((event.target as HTMLInputElement).value);
-    }
-  };
-
   return (
     <>
       {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
       <StyledInputWrapper className={className}>
         <StyledInput
-          onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) =>
-            handleKeyDown(event)
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            onChangeHandler(event.target.value)
           }
           type={type}
           name={name}
