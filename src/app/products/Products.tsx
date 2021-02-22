@@ -36,7 +36,12 @@ const Products = () => {
   useEffect(() => {
     const isPromoQuery = isPromo ? `&${ParamsEnum.promo}=${isPromo}` : "";
     const isActiveQuery = isActive ? `&${ParamsEnum.active}=${isActive}` : "";
-    const params = `?${ParamsEnum.search}=${debouncedSearchTerm}&${ParamsEnum.limit}=8&${ParamsEnum.page}=${selectedPage}${isPromoQuery}${isActiveQuery}`;
+    const params =
+      `?${ParamsEnum.search}=${debouncedSearchTerm}` +
+      `&${ParamsEnum.limit}=8` +
+      `&${ParamsEnum.page}=${selectedPage}` +
+      isPromoQuery +
+      isActiveQuery;
 
     dispatch(fetchProduct(params));
   }, [dispatch, debouncedSearchTerm, isPromo, isActive, selectedPage]);
