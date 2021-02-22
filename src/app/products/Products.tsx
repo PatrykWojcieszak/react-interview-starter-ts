@@ -19,11 +19,16 @@ import { fetchProduct } from "store/products/ProductsSlice";
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
 
+//HOOKS
+import { useDebounce } from "hooks/useDebounce";
+
 const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [selectedPage, setSelectedPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
+
+  const debouncedSearchTerm = useDebounce<string>(searchValue, 500);
 
   const { products, loading } = useSelector((root: RootState) => root.products);
   const dispatch = useDispatch();
@@ -31,10 +36,10 @@ const Products = () => {
   useEffect(() => {
     const isPromoQuery = isPromo ? `&${ParamsEnum.promo}=${isPromo}` : "";
     const isActiveQuery = isActive ? `&${ParamsEnum.active}=${isActive}` : "";
-    const params = `?${ParamsEnum.search}=${searchValue}&${ParamsEnum.limit}=8&${ParamsEnum.page}=${selectedPage}${isPromoQuery}${isActiveQuery}`;
+    const params = `?${ParamsEnum.search}=${debouncedSearchTerm}&${ParamsEnum.limit}=8&${ParamsEnum.page}=${selectedPage}${isPromoQuery}${isActiveQuery}`;
 
     dispatch(fetchProduct(params));
-  }, [dispatch, searchValue, isPromo, isActive, selectedPage]);
+  }, [dispatch, debouncedSearchTerm, isPromo, isActive, selectedPage]);
 
   return (
     <StyledProducts>
