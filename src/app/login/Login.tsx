@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 //COMPONENTS
-import { Button } from "app/shared/button/Button";
-import { Input } from "app/shared/input/Input";
+import { Button, Input } from "app/shared";
 
 //TYPES
 import { device } from "styles/breakpoints";

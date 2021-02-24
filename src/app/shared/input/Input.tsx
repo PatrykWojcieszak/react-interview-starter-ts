@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 //ICON
-import { ReactComponent as SearchIcon } from "../../../styles/icons/search.svg";
+//import { ReactComponent as SearchIcon } from "../../../styles/icons/search.svg";
+import { SearchIcon } from "../../../../public/icons/searchIcon";
+import { Icon } from "../Icon";
 
 //TYPES
 import { InputProps } from "./Input.types";
@@ -15,6 +17,7 @@ export const Input = ({
   type,
   className,
   onChangeHandler,
+  icon,
 }: InputProps) => {
   return (
     <>
@@ -29,7 +32,7 @@ export const Input = ({
           id={name}
           placeholder={placeholder}
         />
-        {showIcon && <SearchIcon />}
+        {showIcon && <Icon name={icon} size={18} />}
       </StyledInputWrapper>
     </>
   );

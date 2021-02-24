@@ -2,14 +2,15 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components/macro";
 
 //COMPONENTS
-import { Modal } from "app/shared/modal/Modal";
+import { Modal, Spinner } from "app/shared";
 import { Card } from "./card/Card";
 import { Product } from "./product/Product";
-import { Spinner } from "app/shared/spinner/Spinner";
 import { NoProducts } from "./noProducts/NoProducts";
 
 //TYPES
 import { ProductListProps } from "./ProductList.types";
+
+//HOOKS
 import { useClickOutside } from "hooks";
 
 //STYLES

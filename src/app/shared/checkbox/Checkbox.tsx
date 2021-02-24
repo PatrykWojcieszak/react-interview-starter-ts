@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { flexCenterVertically } from "styles/mixins";
 
 //ICON
 import { ReactComponent as CheckedIcon } from "../../../styles/icons/checked.svg";
 
 //TYPES
 import { CheckboxProps } from "./Checkbox.types";
+
+//STYLES
+import { flexCenterVertically } from "styles/mixins";
 
 export const Checkbox = ({
   checked,

@@ -3,9 +3,8 @@ import styled from "styled-components";
 
 //COMPONENTS
 import { ProductList } from "./productList/ProductList";
-import { Header } from "app/shared/header/Header";
+import { Header, Pagination } from "app/shared";
 import { Filtering } from "app/products/productList/filtering/Filtering";
-import { Pagination } from "app/shared/pagination/Pagination";
 
 //TYPES
 import { device } from "styles/breakpoints";
@@ -14,13 +13,13 @@ import { ParamsEnum } from "./Params.enum";
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
-import { fetchProduct } from "store/products/ProductsSlice";
+import { fetchProducts } from "store/products/ProductsSlice";
 
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
 
 //HOOKS
-import { useDebounce } from "hooks/useDebounce";
+import { useDebounce } from "hooks";
 
 const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
@@ -43,7 +42,7 @@ const Products = () => {
       isPromoQuery +
       isActiveQuery;
 
-    dispatch(fetchProduct(params));
+    dispatch(fetchProducts(params));
   }, [dispatch, debouncedSearchTerm, isPromo, isActive, selectedPage]);
 
   return (

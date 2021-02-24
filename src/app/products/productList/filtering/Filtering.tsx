@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 //COMPONENTS
-import { Input } from "app/shared/input/Input";
-import { Checkbox } from "app/shared/checkbox/Checkbox";
+import { Input, Checkbox } from "app/shared";
 
 //TYPES
 import { InputTypes } from "app/shared/input/Input.types";
@@ -28,6 +27,7 @@ export const Filtering = ({
         showIcon
         type={InputTypes.text}
         placeholder="Search"
+        icon="search"
         onChangeHandler={(value: string) => searchHandler(value)}
       />
       <StyledCheckboxContainer>

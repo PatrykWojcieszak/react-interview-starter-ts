@@ -32,17 +32,17 @@ const products = createSlice({
   name: "products",
   initialState,
   reducers: {
-    getProductStart(state) {
+    getProductsStart(state) {
       state.loading = true;
     },
-    getProductSuccess(
+    getProductsSuccess(
       state,
       action: PayloadAction<ProductResponseDto<ProductDto>>
     ) {
       state.products = action.payload;
       state.loading = false;
     },
-    getProductFail(state, err) {
+    getProductsFail(state, err) {
       state.errors = err.payload;
       state.loading = false;
     },
@@ -50,23 +50,23 @@ const products = createSlice({
 });
 
 export const {
-  getProductStart,
-  getProductSuccess,
-  getProductFail,
+  getProductsStart,
+  getProductsSuccess,
+  getProductsFail,
 } = products.actions;
 
 export default products.reducer;
 
-export const fetchProduct = (params: string): AppThunk => async (dispatch) => {
+export const fetchProducts = (params: string): AppThunk => async (dispatch) => {
   try {
-    dispatch(getProductStart());
+    dispatch(getProductsStart());
 
     const products = await getData<ProductResponseDto<ProductDto>>(
       PRODUCTS,
       params
     );
-    dispatch(getProductSuccess(products));
+    dispatch(getProductsSuccess(products));
   } catch (err) {
-    dispatch(getProductFail(err));
+    dispatch(getProductsFail(err));
   }
 };
