@@ -1,9 +1,9 @@
+import { IconEnum } from "app/shared/icon/Icon.enum";
 import React from "react";
 import styled from "styled-components";
 
-//ICONS
-import { ReactComponent as StarFilled } from "../../../../../styles/icons/starFilled.svg";
-import { ReactComponent as Star } from "../../../../../styles/icons/star.svg";
+//COMPONENTS
+import { Icon } from "../../../../shared/";
 
 //TYPES
 import { RatingProps } from "./Rating.types";
@@ -13,19 +13,23 @@ export const Rating = ({ rating }: RatingProps) => {
     <>
       {[1, 2, 3, 4, 5].map((item) =>
         item <= rating ? (
-          <StyledStarFilled key={item} />
+          <StyledStar
+            key={item}
+            name={IconEnum.starFilled}
+            width={20}
+            height={19}
+          />
         ) : (
-          <StyledStar key={item} />
+          <StyledStar key={item} name={IconEnum.star} width={20} height={19} />
         )
       )}
     </>
   );
 };
 
-const StyledStarFilled = styled(StarFilled)`
-  fill: ${({ theme }) => theme.colors?.yellow};
-`;
-
-const StyledStar = styled(Star)`
-  fill: ${({ theme }) => theme.colors?.lightGrey};
+const StyledStar = styled(Icon)`
+  fill: ${({ theme, name }) =>
+    name === IconEnum.starFilled
+      ? theme.colors?.yellow
+      : theme.colors?.lightGrey};
 `;

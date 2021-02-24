@@ -8,6 +8,7 @@ import { Input, Checkbox } from "app/shared";
 import { InputTypes } from "app/shared/input/Input.types";
 import { device } from "styles/breakpoints";
 import { FilteringProps } from "./Filtering.types";
+import { IconEnum } from "app/shared/icon/Icon.enum";
 
 //STYLES
 import { flexColumn } from "styles/mixins";
@@ -24,10 +25,9 @@ export const Filtering = ({
       <StyledInput
         as={Input}
         name="search"
-        showIcon
         type={InputTypes.text}
         placeholder="Search"
-        icon="search"
+        icon={IconEnum.search}
         onChangeHandler={(value: string) => searchHandler(value)}
       />
       <StyledCheckboxContainer>

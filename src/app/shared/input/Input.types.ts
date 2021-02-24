@@ -1,3 +1,5 @@
+import { IconEnum } from "./../icon/Icon.enum";
+
 export enum InputTypes {
   text = "text",
   number = "number",
@@ -5,12 +7,11 @@ export enum InputTypes {
 }
 
 export type InputProps = {
-  showIcon?: boolean;
   name: string;
   label?: string;
   placeholder?: string;
   type: InputTypes;
   className?: string;
-  icon?: string;
+  icon?: IconEnum;
   onChangeHandler: (value: string) => void;
 };

@@ -1,8 +1,9 @@
+import { IconEnum } from "app/shared/icon/Icon.enum";
 import React from "react";
 import styled from "styled-components";
 
-//ICON
-import { ReactComponent as Cross } from "../../../../styles/icons/cross.svg";
+//COMPONENTS
+import { Icon } from "../../../shared/";
 
 //TYPES
 import { ProductTypes } from "./Product.types";
@@ -16,7 +17,12 @@ export const Product = ({
 }: ProductTypes) => {
   return (
     <StyledProduct ref={reference}>
-      <StyledCross onClick={close} />
+      <StyledCross
+        onClick={close}
+        name={IconEnum.cross}
+        height={14}
+        width={14}
+      />
       <StyledImage src={img} />
       <StyledBody>
         <StyledTitle>{name}</StyledTitle>
@@ -61,7 +67,7 @@ const StyledDescription = styled.h4`
   color: ${({ theme }) => theme.colors?.darkGrey};
 `;
 
-const StyledCross = styled(Cross)`
+const StyledCross = styled(Icon)`
   position: absolute;
   top: 24px;
   right: 24px;

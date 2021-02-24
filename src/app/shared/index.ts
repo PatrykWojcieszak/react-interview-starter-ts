@@ -7,3 +7,4 @@ export { Input } from "./input/Input";
 export { Modal } from "./modal/Modal";
 export { Spinner } from "./spinner/Spinner";
 export { Pagination } from "./pagination/Pagination";
+export { Icon } from "./icon/Icon";

@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-//ICON
-import { ReactComponent as CheckedIcon } from "../../../styles/icons/checked.svg";
+//COMPONENTS
+import { Icon } from "..";
 
 //TYPES
 import { CheckboxProps } from "./Checkbox.types";
+import { IconEnum } from "../icon/Icon.enum";
 
 //STYLES
 import { flexCenterVertically } from "styles/mixins";
@@ -23,7 +24,7 @@ export const Checkbox = ({
   return (
     <CheckboxContainer onClick={() => checkboxChangedHandler(!checked)}>
       <StyledCheckbox checked={checked} name={name}>
-        <CheckedIcon />
+        <Icon name={IconEnum.checked} width={18} height={14} />
       </StyledCheckbox>
       {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
     </CheckboxContainer>
