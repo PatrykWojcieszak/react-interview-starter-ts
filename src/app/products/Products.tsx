@@ -27,7 +27,7 @@ const Products = () => {
   const [selectedPage, setSelectedPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
 
-  const debouncedSearchTerm = useDebounce<string>(searchValue, 500);
+  const debouncedSearchValue = useDebounce<string>(searchValue, 500);
 
   const { products, loading } = useSelector((root: RootState) => root.products);
   const dispatch = useDispatch();
@@ -36,14 +36,14 @@ const Products = () => {
     const isPromoQuery = isPromo ? `&${ParamsEnum.promo}=${isPromo}` : "";
     const isActiveQuery = isActive ? `&${ParamsEnum.active}=${isActive}` : "";
     const params =
-      `?${ParamsEnum.search}=${debouncedSearchTerm}` +
+      `?${ParamsEnum.search}=${debouncedSearchValue}` +
       `&${ParamsEnum.limit}=8` +
       `&${ParamsEnum.page}=${selectedPage}` +
       isPromoQuery +
       isActiveQuery;
 
     dispatch(fetchProducts(params));
-  }, [dispatch, debouncedSearchTerm, isPromo, isActive, selectedPage]);
+  }, [dispatch, debouncedSearchValue, isPromo, isActive, selectedPage]);
 
   return (
     <StyledProducts>

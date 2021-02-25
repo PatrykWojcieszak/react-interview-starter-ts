@@ -72,5 +72,6 @@ const StyledButton = styled.button<{ styleType: BtnStyleTypes }>`
         : theme.colors?.darkGrey};
 
     border: 1px solid ${({ theme }) => theme.colors?.darkGrey};
+    cursor: auto;
   }
 `;
