@@ -10,7 +10,7 @@ import { flexColumnCenter } from "styles/mixins";
 //TYPES
 import { IconEnum } from "app/shared/icon/Icon.enum";
 
-export const NoProducts = () => {
+export const ProductsNotFound = () => {
   return (
     <StyledNoProductsContainer>
       <StyledTaskListPlain name={IconEnum.taskPlain} width={38} height={48} />

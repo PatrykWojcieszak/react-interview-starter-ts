@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 import { Modal, Spinner } from "app/shared";
 import { Card } from "./card/Card";
 import { Product } from "./product/Product";
-import { NoProducts } from "./noProducts/NoProducts";
+import { ProductsNotFound } from "./productsNotFound/ProductsNotFound";
 
 //TYPES
 import { ProductListProps } from "./ProductList.types";
@@ -47,7 +47,7 @@ export const ProductList = ({ products, loading }: ProductListProps) => {
       </Modal>
 
       {loading && <Spinner />}
-      {products.length === 0 && !loading ? <NoProducts /> : null}
+      {products.length === 0 && !loading ? <ProductsNotFound /> : null}
 
       {!loading &&
         products.map((product) => (

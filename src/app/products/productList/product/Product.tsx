@@ -1,4 +1,3 @@
-import { IconEnum } from "app/shared/icon/Icon.enum";
 import React from "react";
 import styled from "styled-components";
 
@@ -7,6 +6,7 @@ import { Icon } from "../../../shared/";
 
 //TYPES
 import { ProductTypes } from "./Product.types";
+import { IconEnum } from "app/shared/icon/Icon.enum";
 
 export const Product = ({
   img,
