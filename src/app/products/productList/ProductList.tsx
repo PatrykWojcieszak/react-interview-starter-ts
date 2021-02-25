@@ -2,14 +2,15 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components/macro";
 
 //COMPONENTS
-import { Modal } from "app/shared/modal/Modal";
+import { Modal, Spinner } from "app/shared";
 import { Card } from "./card/Card";
 import { Product } from "./product/Product";
-import { Spinner } from "app/shared/spinner/Spinner";
-import { NoProducts } from "./noProducts/NoProducts";
+import { ProductsNotFound } from "./productsNotFound/ProductsNotFound";
 
 //TYPES
 import { ProductListProps } from "./ProductList.types";
+
+//HOOKS
 import { useClickOutside } from "hooks";
 
 //STYLES
@@ -46,7 +47,7 @@ export const ProductList = ({ products, loading }: ProductListProps) => {
       </Modal>
 
       {loading && <Spinner />}
-      {products.length === 0 && !loading ? <NoProducts /> : null}
+      {products.length === 0 && !loading ? <ProductsNotFound /> : null}
 
       {!loading &&
         products.map((product) => (

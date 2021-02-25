@@ -1,15 +1,17 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-//ICONS
-import { ReactComponent as SpinnerIcon } from "../../../styles/icons/spinner.svg";
-import { ReactComponent as SpinnerOvalIcon } from "../../../styles/icons/spinnerOval.svg";
+//COMPONENTS
+import { Icon } from "../../shared";
+
+//TYPES
+import { IconEnum } from "../icon/Icon.enum";
 
 export const Spinner = () => {
   return (
     <StyledSpinnerWrapper>
-      <StyledSpinnerOval />
-      <StyledSpinner />
+      <StyledSpinnerOval name={IconEnum.spinnerOval} width={60} height={60} />
+      <StyledSpinner name={IconEnum.spinner} width={60} height={60} />
     </StyledSpinnerWrapper>
   );
 };
@@ -21,13 +23,14 @@ const StyledSpinnerWrapper = styled.div`
   height: 56px;
 `;
 
-const StyledSpinnerOval = styled(SpinnerOvalIcon)`
+const StyledSpinnerOval = styled(Icon)`
   position: absolute;
   top: 0;
   left: 0;
   width: 56px;
   height: 56px;
   stroke: ${({ theme }) => theme.colors?.accent};
+  fill: transparent;
 `;
 
 const rotate = keyframes`
@@ -40,7 +43,7 @@ const rotate = keyframes`
   }
 `;
 
-const StyledSpinner = styled(SpinnerIcon)`
+const StyledSpinner = styled(Icon)`
   position: absolute;
   top: 0;
   right: 0;
@@ -49,4 +52,5 @@ const StyledSpinner = styled(SpinnerIcon)`
   height: 56px;
   stroke: ${({ theme }) => theme.colors?.lightBlue};
   animation: ${rotate} 1.5s linear infinite;
+  fill: transparent;
 `;

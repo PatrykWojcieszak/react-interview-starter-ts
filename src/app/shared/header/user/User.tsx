@@ -2,9 +2,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 //COMPONENTS
-import { Avatar } from "app/shared/avatar/Avatar";
-import { Button } from "app/shared/button/Button";
-import { Dropdown } from "app/shared/dropdown/Dropdown";
+import { Avatar, Button, Dropdown } from "app/shared";
 
 //TYPES
 import { BtnStyleTypes } from "app/shared/button/Button.types";

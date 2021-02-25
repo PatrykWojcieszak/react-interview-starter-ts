@@ -4,10 +4,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getData, PRODUCTS } from "api/api";
 
 //TYPES
-import { ProductDto, ProductResponseDto } from "../../types";
-import { ProductState } from "./ProductSlice.types";
+import { ProductDto, ProductsResponseDto } from "../../types";
+import { ProductsState } from "./ProductSlice.types";
 
-const initialState: ProductState = {
+const initialState: ProductsState = {
   products: {
     items: [],
     meta: {
@@ -32,17 +32,17 @@ const products = createSlice({
   name: "products",
   initialState,
   reducers: {
-    getProductStart(state) {
+    getProductsStart(state) {
       state.loading = true;
     },
-    getProductSuccess(
+    getProductsSuccess(
       state,
-      action: PayloadAction<ProductResponseDto<ProductDto>>
+      action: PayloadAction<ProductsResponseDto<ProductDto>>
     ) {
       state.products = action.payload;
       state.loading = false;
     },
-    getProductFail(state, err) {
+    getProductsFail(state, err) {
       state.errors = err.payload;
       state.loading = false;
     },
@@ -50,23 +50,23 @@ const products = createSlice({
 });
 
 export const {
-  getProductStart,
-  getProductSuccess,
-  getProductFail,
+  getProductsStart,
+  getProductsSuccess,
+  getProductsFail,
 } = products.actions;
 
 export default products.reducer;
 
-export const fetchProduct = (params: string): AppThunk => async (dispatch) => {
+export const fetchProducts = (params: string): AppThunk => async (dispatch) => {
   try {
-    dispatch(getProductStart());
+    dispatch(getProductsStart());
 
-    const products = await getData<ProductResponseDto<ProductDto>>(
+    const products = await getData<ProductsResponseDto<ProductDto>>(
       PRODUCTS,
       params
     );
-    dispatch(getProductSuccess(products));
+    dispatch(getProductsSuccess(products));
   } catch (err) {
-    dispatch(getProductFail(err));
+    dispatch(getProductsFail(err));
   }
 };

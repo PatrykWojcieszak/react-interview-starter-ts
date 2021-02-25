@@ -3,9 +3,8 @@ import styled from "styled-components";
 
 //COMPONENTS
 import { ProductList } from "./productList/ProductList";
-import { Header } from "app/shared/header/Header";
+import { Header, Pagination } from "app/shared";
 import { Filtering } from "app/products/productList/filtering/Filtering";
-import { Pagination } from "app/shared/pagination/Pagination";
 
 //TYPES
 import { device } from "styles/breakpoints";
@@ -14,13 +13,13 @@ import { ParamsEnum } from "./Params.enum";
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
-import { fetchProduct } from "store/products/ProductsSlice";
+import { fetchProducts } from "store/products/ProductsSlice";
 
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
 
 //HOOKS
-import { useDebounce } from "hooks/useDebounce";
+import { useDebounce } from "hooks";
 
 const Products = () => {
   const [isPromo, setIsPromo] = useState(false);
@@ -28,7 +27,7 @@ const Products = () => {
   const [selectedPage, setSelectedPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
 
-  const debouncedSearchTerm = useDebounce<string>(searchValue, 500);
+  const debouncedSearchValue = useDebounce<string>(searchValue, 500);
 
   const { products, loading } = useSelector((root: RootState) => root.products);
   const dispatch = useDispatch();
@@ -37,14 +36,14 @@ const Products = () => {
     const isPromoQuery = isPromo ? `&${ParamsEnum.promo}=${isPromo}` : "";
     const isActiveQuery = isActive ? `&${ParamsEnum.active}=${isActive}` : "";
     const params =
-      `?${ParamsEnum.search}=${debouncedSearchTerm}` +
+      `?${ParamsEnum.search}=${debouncedSearchValue}` +
       `&${ParamsEnum.limit}=8` +
       `&${ParamsEnum.page}=${selectedPage}` +
       isPromoQuery +
       isActiveQuery;
 
-    dispatch(fetchProduct(params));
-  }, [dispatch, debouncedSearchTerm, isPromo, isActive, selectedPage]);
+    dispatch(fetchProducts(params));
+  }, [dispatch, debouncedSearchValue, isPromo, isActive, selectedPage]);
 
   return (
     <StyledProducts>

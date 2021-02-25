@@ -1,16 +1,19 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-//ICON
-import { ReactComponent as TaskListPlain } from "../../../../styles/icons/task-list-plain.svg";
+//COMPONENTS
+import { Icon } from "app/shared";
 
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
 
-export const NoProducts = () => {
+//TYPES
+import { IconEnum } from "app/shared/icon/Icon.enum";
+
+export const ProductsNotFound = () => {
   return (
     <StyledNoProductsContainer>
-      <StyledTaskListPlain />
+      <StyledTaskListPlain name={IconEnum.taskPlain} width={38} height={48} />
       <StyledTitle>Ooops... It's empty here</StyledTitle>
       <StyledDescription>There are no products on the list</StyledDescription>
     </StyledNoProductsContainer>
@@ -39,7 +42,7 @@ const StyledDescription = styled.h4`
   color: ${({ theme }) => theme.colors?.darkGrey};
 `;
 
-const StyledTaskListPlain = styled(TaskListPlain)`
+const StyledTaskListPlain = styled(Icon)`
   stroke: ${({ theme }) => theme.colors?.lightGrey};
   fill: ${({ theme }) => theme.colors?.lightGrey};
   margin-bottom: 22.48px;

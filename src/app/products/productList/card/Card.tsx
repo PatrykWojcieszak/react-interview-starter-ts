@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 //COMPONENTS
-import { Button } from "app/shared/button/Button";
+import { Button } from "app/shared";
 import { Details } from "./details/Details";
 import { Rating } from "./rating/Rating";
 
