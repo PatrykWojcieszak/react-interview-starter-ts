@@ -12,7 +12,7 @@ import { device } from "styles/breakpoints";
 import { useClickOutside, useLocalStorage } from "hooks";
 
 //STYLES
-import { flexColumn, flexColumnCenter } from "styles/mixins";
+import { flexColumn } from "styles/mixins";
 
 export const User = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -31,7 +31,7 @@ export const User = () => {
   };
 
   return (
-    <StyledUserContainer>
+    <StyledUserContainer isLoggedIn={isLoggedIn}>
       {isLoggedIn ? (
         <>
           <Avatar clicked={() => setShowDropdown(!showDropdown)} />
@@ -55,9 +55,9 @@ export const User = () => {
   );
 };
 
-const StyledUserContainer = styled(flexColumnCenter)`
+const StyledUserContainer = styled(flexColumn)<{ isLoggedIn: boolean }>`
   position: absolute;
-  top: 48px;
+  top: ${({ isLoggedIn }) => (isLoggedIn ? "48px" : "53px")};
   right: 24px;
   align-items: flex-end;
 
