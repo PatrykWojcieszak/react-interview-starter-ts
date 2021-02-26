@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 //COMPONENTS
 import { Avatar, Button, Dropdown } from "app/shared";
@@ -12,7 +12,7 @@ import { device } from "styles/breakpoints";
 import { useClickOutside, useLocalStorage } from "hooks";
 
 //STYLES
-import { flexColumn } from "styles/mixins";
+import { flexColumn, flexColumnCenter } from "styles/mixins";
 
 export const User = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -55,7 +55,7 @@ export const User = () => {
   );
 };
 
-const StyledUserContainer = styled(flexColumn)`
+const StyledUserContainer = styled(flexColumnCenter)`
   position: absolute;
   top: 48px;
   right: 24px;
