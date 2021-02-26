@@ -69,8 +69,8 @@ const StyledDescription = styled.h4`
 
 const StyledCross = styled(Icon)`
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 25px;
+  right: 25px;
   fill: ${({ theme }) => theme.colors?.black};
   cursor: pointer;
 `;

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 //COMPONENTS
 import { Avatar, Button, Dropdown } from "app/shared";
@@ -31,7 +31,7 @@ export const User = () => {
   };
 
   return (
-    <StyledUserContainer>
+    <StyledUserContainer isLoggedIn={isLoggedIn}>
       {isLoggedIn ? (
         <>
           <Avatar clicked={() => setShowDropdown(!showDropdown)} />
@@ -55,9 +55,9 @@ export const User = () => {
   );
 };
 
-const StyledUserContainer = styled(flexColumn)`
+const StyledUserContainer = styled(flexColumn)<{ isLoggedIn: boolean }>`
   position: absolute;
-  top: 48px;
+  top: ${({ isLoggedIn }) => (isLoggedIn ? "48px" : "53px")};
   right: 24px;
   align-items: flex-end;
 

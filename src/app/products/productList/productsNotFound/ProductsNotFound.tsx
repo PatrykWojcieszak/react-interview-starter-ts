@@ -13,7 +13,7 @@ import { IconEnum } from "app/shared/icon/Icon.enum";
 export const ProductsNotFound = () => {
   return (
     <StyledNoProductsContainer>
-      <StyledTaskListPlain name={IconEnum.taskPlain} width={38} height={48} />
+      <StyledTaskListPlain name={IconEnum.taskPlain} width={36} height={45} />
       <StyledTitle>Ooops... It's empty here</StyledTitle>
       <StyledDescription>There are no products on the list</StyledDescription>
     </StyledNoProductsContainer>
