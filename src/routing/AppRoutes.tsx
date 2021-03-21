@@ -19,7 +19,6 @@ export const AppRoutes = () => {
       <Switch>
         <Route path={AppRoute.home} exact render={() => <Products />} />
         <Route path={AppRoute.login} render={() => <Login />} />
-
         <Redirect to={AppRoute.home} />
       </Switch>
     </React.Suspense>
