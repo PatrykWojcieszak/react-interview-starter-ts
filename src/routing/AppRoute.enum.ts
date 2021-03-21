@@ -1,4 +1,4 @@
 export enum AppRoute {
-  home = '/',
-  login = '/login',
+  home = "/",
+  login = "/login",
 }

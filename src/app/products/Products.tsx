@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useLocation, useHistory } from "react-router-dom";
 
 //COMPONENTS
 import { ProductList } from "./productList/ProductList";
@@ -14,7 +15,6 @@ import { ParamsEnum } from "./Params.enum";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/rootReducer";
 import { fetchProducts } from "store/products/ProductsSlice";
-
 //STYLES
 import { flexColumnCenter } from "styles/mixins";
 
@@ -22,28 +22,53 @@ import { flexColumnCenter } from "styles/mixins";
 import { useDebounce } from "hooks";
 
 const Products = () => {
-  const [isPromo, setIsPromo] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  const [selectedPage, setSelectedPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
-
   const debouncedSearchValue = useDebounce<string>(searchValue, 500);
-
   const { products, loading } = useSelector((root: RootState) => root.products);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const isPromoQuery = isPromo ? `&${ParamsEnum.promo}=${isPromo}` : "";
-    const isActiveQuery = isActive ? `&${ParamsEnum.active}=${isActive}` : "";
-    const params =
-      `?${ParamsEnum.search}=${debouncedSearchValue}` +
-      `&${ParamsEnum.limit}=8` +
-      `&${ParamsEnum.page}=${selectedPage}` +
-      isPromoQuery +
-      isActiveQuery;
+  const history = useHistory();
+  const locationSearch = useLocation().search;
 
-    dispatch(fetchProducts(params));
-  }, [dispatch, debouncedSearchValue, isPromo, isActive, selectedPage]);
+  const searchParams = new URLSearchParams(locationSearch);
+  if (!searchParams.has(ParamsEnum.limit))
+    searchParams.append(ParamsEnum.limit, "8");
+
+  const isPromo = Boolean(
+    new URLSearchParams(locationSearch).get(ParamsEnum.promo)
+  );
+  const isActive = Boolean(
+    new URLSearchParams(locationSearch).get(ParamsEnum.active)
+  );
+  const selectedPage = new URLSearchParams(locationSearch).get(ParamsEnum.page);
+
+  const fetch = () => {
+    history.push({
+      pathname: "/",
+      search: "?" + searchParams.toString(),
+    });
+
+    dispatch(fetchProducts("?" + searchParams.toString()));
+  };
+
+  const setSearchParam = (key: string, val: string) => {
+    if (searchParams.has(key)) searchParams.set(key, val);
+    else searchParams.append(key, val);
+  };
+
+  const buildQuery = (key: string, val: string | boolean | number) => {
+    if (!val) searchParams.delete(key);
+    else setSearchParam(key, val.toString());
+
+    fetch();
+  };
+
+  useEffect(() => {
+    if (debouncedSearchValue === "") searchParams.delete(ParamsEnum.search);
+    else setSearchParam(ParamsEnum.search, debouncedSearchValue);
+
+    fetch();
+  }, [dispatch, debouncedSearchValue]);
 
   return (
     <StyledProducts>
@@ -51,8 +76,12 @@ const Products = () => {
         <Filtering
           isActive={isActive}
           isPromo={isPromo}
-          isActiveHandler={(checked: boolean) => setIsActive(checked)}
-          isPromoHandler={(checked: boolean) => setIsPromo(checked)}
+          isActiveHandler={(checked: boolean) =>
+            buildQuery(ParamsEnum.active, checked)
+          }
+          isPromoHandler={(checked: boolean) =>
+            buildQuery(ParamsEnum.promo, checked)
+          }
           searchHandler={(value: string) => setSearchValue(value)}
         />
       </Header>
@@ -60,9 +89,11 @@ const Products = () => {
         <ProductList products={products.items} loading={loading} />
         {products.items.length > 0 && !loading ? (
           <Pagination
-            selectedPage={selectedPage}
+            selectedPage={selectedPage ? +selectedPage : 1}
             totalPages={products.meta.totalPages}
-            selectedPageHandler={(page: number) => setSelectedPage(page)}
+            selectedPageHandler={(page: number) =>
+              buildQuery(ParamsEnum.page, page)
+            }
           />
         ) : null}
       </StyledBody>

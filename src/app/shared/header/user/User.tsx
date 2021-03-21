@@ -14,7 +14,7 @@ import { useClickOutside, useLocalStorage } from "hooks";
 //STYLES
 import { flexColumn } from "styles/mixins";
 
-export const User = () => {
+export const User = React.memo(() => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage("loggedIn", true);
   const ref = useRef(null);
@@ -53,7 +53,7 @@ export const User = () => {
       )}
     </StyledUserContainer>
   );
-};
+});
 
 const StyledUserContainer = styled(flexColumn)<{ isLoggedIn: boolean }>`
   position: absolute;
