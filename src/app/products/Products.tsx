@@ -51,24 +51,26 @@ const Products = () => {
     dispatch(fetchProducts("?" + searchParams.toString()));
   };
 
-  const setSearchParam = (key: string, val: string) => {
-    if (searchParams.has(key)) searchParams.set(key, val);
-    else searchParams.append(key, val);
-  };
+  const setSearchParam = (key: string, val: string | boolean | number) => {
+    console.log("val", val);
+    if (!val) {
+      console.log("true");
+      searchParams.delete(key);
+    } else {
+      if (searchParams.has(key)) searchParams.set(key, val.toString());
+      else searchParams.append(key, val.toString());
+    }
 
-  const buildQuery = (key: string, val: string | boolean | number) => {
-    if (!val) searchParams.delete(key);
-    else setSearchParam(key, val.toString());
-
+    if (key !== ParamsEnum.page) {
+      console.log(searchParams.toString());
+      searchParams.set(ParamsEnum.page, "1");
+    }
     fetch();
   };
 
   useEffect(() => {
-    if (debouncedSearchValue === "") searchParams.delete(ParamsEnum.search);
-    else setSearchParam(ParamsEnum.search, debouncedSearchValue);
-
-    fetch();
-  }, [dispatch, debouncedSearchValue]);
+    setSearchParam(ParamsEnum.search, debouncedSearchValue);
+  }, [debouncedSearchValue]);
 
   return (
     <StyledProducts>
@@ -77,10 +79,10 @@ const Products = () => {
           isActive={isActive}
           isPromo={isPromo}
           isActiveHandler={(checked: boolean) =>
-            buildQuery(ParamsEnum.active, checked)
+            setSearchParam(ParamsEnum.active, checked)
           }
           isPromoHandler={(checked: boolean) =>
-            buildQuery(ParamsEnum.promo, checked)
+            setSearchParam(ParamsEnum.promo, checked)
           }
           searchHandler={(value: string) => setSearchValue(value)}
         />
@@ -92,7 +94,7 @@ const Products = () => {
             selectedPage={selectedPage ? +selectedPage : 1}
             totalPages={products.meta.totalPages}
             selectedPageHandler={(page: number) =>
-              buildQuery(ParamsEnum.page, page)
+              setSearchParam(ParamsEnum.page, page)
             }
           />
         ) : null}
