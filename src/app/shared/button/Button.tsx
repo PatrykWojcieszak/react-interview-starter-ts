@@ -12,8 +12,20 @@ export const Button = ({
   styleType,
   className,
 }: ButtonProps) => {
+  const getButtonStyle = () => {
+    switch (styleType) {
+      case BtnStyleTypes.primary:
+        return StyledButtonPrimary;
+      case BtnStyleTypes.secondary:
+        return StyledButtonSecondary;
+      default:
+        return StyledButtonPrimary;
+    }
+  };
+
   return (
     <StyledButton
+      as={getButtonStyle()}
       className={className}
       styleType={styleType}
       name={name}
@@ -35,42 +47,40 @@ const StyledButton = styled.button<{ styleType: BtnStyleTypes }>`
   font-family: ${({ theme }) => theme.fonts?.family};
   outline: none;
   padding: 11px 24px;
-
-  background-color: ${({ theme, styleType }) =>
-    styleType === BtnStyleTypes.primary
-      ? theme.colors?.lightBlue
-      : theme.colors?.white};
-  color: ${({ theme, styleType }) =>
-    styleType === BtnStyleTypes.primary
-      ? theme.colors?.white
-      : theme.colors?.lightBlue};
-
   border: 1px solid ${({ theme }) => theme.colors?.lightBlue};
+`;
+
+const StyledButtonPrimary = styled(StyledButton)`
+  background-color: ${({ theme }) => theme.colors.lightBlue};
+  color: ${({ theme }) => theme.colors.white};
 
   &:hover {
-    background-color: ${({ theme, styleType }) =>
-      styleType === BtnStyleTypes.primary
-        ? theme.colors?.darkBlue
-        : theme.colors?.white};
-    color: ${({ theme, styleType }) =>
-      styleType === BtnStyleTypes.primary
-        ? theme.colors?.white
-        : theme.colors?.darkBlue};
-
+    background-color: ${({ theme }) => theme.colors?.darkBlue};
+    color: ${({ theme }) => theme.colors?.white};
     border: 1px solid ${({ theme }) => theme.colors?.darkBlue};
   }
 
   &:disabled {
-    background-color: ${({ theme, styleType }) =>
-      styleType === BtnStyleTypes.primary
-        ? theme.colors?.darkGrey
-        : theme.colors?.white};
+    background-color: ${({ theme }) => theme.colors?.darkGrey};
+    color: ${({ theme }) => theme.colors?.white};
+    border: 1px solid ${({ theme }) => theme.colors?.darkGrey};
+    cursor: auto;
+  }
+`;
 
-    color: ${({ theme, styleType }) =>
-      styleType === BtnStyleTypes.primary
-        ? theme.colors?.white
-        : theme.colors?.darkGrey};
+const StyledButtonSecondary = styled(StyledButton)`
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.lightBlue};
 
+  &:hover {
+    background-color: ${({ theme }) => theme.colors?.white};
+    color: ${({ theme }) => theme.colors?.darkBlue};
+    border: 1px solid ${({ theme }) => theme.colors?.darkBlue};
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors?.white};
+    color: ${({ theme }) => theme.colors?.darkGrey};
     border: 1px solid ${({ theme }) => theme.colors?.darkGrey};
     cursor: auto;
   }
